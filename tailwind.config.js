@@ -24,6 +24,7 @@ module.exports = {
         "2xlarge": "1920px",
       },
       fontFamily: {
+        pacifico: ["Pacifico", "cursive"],
         sans: [
           "Inter",
           "-apple-system",
@@ -37,5 +38,10 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [daisyui],
+
+  daisyui: {
+    themes: ["valentine", "dark", "cupcake"],
+  },
 }
+
