@@ -1,5 +1,5 @@
 "use client"
-
+import { Dancing_Script } from 'next/font/google'
 import { useMobileMenu } from "@lib/context/mobile-menu-context"
 import Hamburger from "@modules/common/components/hamburger"
 import CartDropdown from "@modules/layout/components/cart-dropdown"
@@ -49,9 +49,9 @@ const Nav = () => {
     >
       <header
         className={clsx(
-          "relative h-16 px-8 mx-auto transition-colors bg-transparent border-b border-transparent duration-200 group-hover:bg-white group-hover:border-gray-200",
+          "relative h-16 px-8 mx-auto transition-colors bg-transparent border-b border-transparent duration-200 group-hover:bg-neutral group-hover:border-accent",
           {
-            "!bg-white !border-gray-200": !isHome || isScrolled,
+            "!bg-neutral !border-accent1": !isHome || isScrolled,
           }
         )}
       >
@@ -73,8 +73,8 @@ const Nav = () => {
           </div>
 
           <div className="flex items-center h-full">
-            <Link href="/" className="text-xl-semi uppercase">
-              Acme
+            <Link href="/" className="text-xl-semi font-dancing-script">
+              Sublimahyca
             </Link>
           </div>
 
