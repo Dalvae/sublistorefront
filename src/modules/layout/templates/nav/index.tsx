@@ -1,5 +1,5 @@
 "use client"
-import { Dancing_Script } from 'next/font/google'
+import { Dancing_Script } from "next/font/google"
 import { useMobileMenu } from "@lib/context/mobile-menu-context"
 import Hamburger from "@modules/common/components/hamburger"
 import CartDropdown from "@modules/layout/components/cart-dropdown"
@@ -11,6 +11,10 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
 
+const dancing = Dancing_Script({
+  weight: "700",
+  subsets: ["latin"],
+})
 const Nav = () => {
   const pathname = usePathname()
   const [isHome, setIsHome] = useState(true)
@@ -73,7 +77,7 @@ const Nav = () => {
           </div>
 
           <div className="flex items-center h-full">
-            <Link href="/" className="text-xl-semi font-dancing-script">
+            <Link href="/" className={`text-xl-semi ${dancing.className}`}>
               Sublimahyca
             </Link>
           </div>
@@ -81,7 +85,7 @@ const Nav = () => {
           <div className="flex items-center gap-x-6 h-full flex-1 basis-0 justify-end">
             <div className="hidden small:flex items-center gap-x-6 h-full">
               {process.env.FEATURE_SEARCH_ENABLED && <DesktopSearchModal />}
-              <Link href="/account">Account</Link>
+              <Link href="/account">Cuenta</Link>
             </div>
             <CartDropdown />
           </div>
