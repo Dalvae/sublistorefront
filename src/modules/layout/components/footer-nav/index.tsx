@@ -1,6 +1,6 @@
 "use client"
 import Logo from "@modules/common/icons/logo"
-import { Dancing_Script } from "next/font/google"
+import { Dancing_Script } from "@next/font/google"
 import clsx from "clsx"
 import { useCollections, useProductCategories } from "medusa-react"
 import Link from "next/link"
