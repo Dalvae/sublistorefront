@@ -4,19 +4,21 @@ import Image from "next/image"
 const Hero = () => {
   return (
     <div className="h-[90vh] w-full relative">
-      <div className="text-white absolute inset-0 z-10 flex flex-col justify-center items-center text-center small:text-left small:justify-end small:items-start small:p-32">
-        <div className="bg-opacity-70 bg-[#af4670]">
-          <h1 className="text-2xl-semi  mb-4 drop-shadow-md shadow-black">
+      <div className="text-white absolute bottom-0 left-0 z-10 flex flex-col justify-center items-center text-center small:text-left small:justify-end small:items-start small:p-32">
+        <div className="bg-opacity-70 shadow-2xl shadow-black bg-[#af4670a0] bg-gradient-blue bg-blend-soft-light rounded-md">
+          <h1 className="text-2xl-semi  m-4  ">
             Un toque personal para momentos inolvidables
           </h1>
-          <p className="text-base-regular  bg-opacity-70 max-w-[32rem] mb-6 drop-shadow-lg shadow-black">
+          <p className="text-base-regular  bg-opacity-70 max-w-[32rem] m-6 drop-shadow-lg shadow-black">
             En Sublimahyca, creemos que cada regalo debe contar una historia.
             Descubre nuestra gama única de regalos personalizados, diseñados
             para celebrar y conmemorar las ocasiones más especiales de la vida.
             Desde grabados hechos a mano hasta diseños a medida, tus seres
             queridos merecen algo tan único como ellos..
           </p>
-          <UnderlineLink href="/store">Explorar Productos</UnderlineLink>
+          <UnderlineLink href="/store" classNames="pl-2, ml-2">
+            Explorar Productos
+          </UnderlineLink>
         </div>
       </div>
       <Image
