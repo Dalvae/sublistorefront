@@ -7,6 +7,12 @@ import X from "@modules/common/icons/x"
 import { useCollections, useMeCustomer } from "medusa-react"
 import Link from "next/link"
 import ReactCountryFlag from "react-country-flag"
+import { Dancing_Script } from "@next/font/google"
+const dancing = Dancing_Script({
+  weight: "700",
+  subsets: ["latin"],
+  display: "swap",
+})
 
 const MainMenu = () => {
   const { collections } = useCollections()
@@ -36,7 +42,9 @@ const MainMenu = () => {
           </button>
         </div>
         <div>
-          <h1 className="text-xl-semi uppercase">Acme</h1>
+          <h1 className={`text-xl-semi items-center ${dancing.className}`}>
+            Sublimahyca
+          </h1>
         </div>
         <div className="flex-1 basis-0 flex justify-end">
           <button onClick={close}>
