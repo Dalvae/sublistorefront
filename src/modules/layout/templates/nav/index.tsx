@@ -1,5 +1,5 @@
 "use client"
-import { Dancing_Script } from "next/font/google"
+import { Dancing_Script } from "@next/font/google"
 import { useMobileMenu } from "@lib/context/mobile-menu-context"
 import Hamburger from "@modules/common/components/hamburger"
 import CartDropdown from "@modules/layout/components/cart-dropdown"
