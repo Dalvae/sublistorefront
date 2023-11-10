@@ -1,10 +1,16 @@
 "use client"
-
+import Logo from "@modules/common/icons/logo"
+import { Dancing_Script } from "next/font/google"
 import clsx from "clsx"
 import { useCollections, useProductCategories } from "medusa-react"
 import Link from "next/link"
 import CountrySelect from "../country-select"
 
+const dancing = Dancing_Script({
+  weight: "700",
+  subsets: ["latin"],
+  display: "swap",
+})
 const FooterNav = () => {
   const { collections } = useCollections()
   const { product_categories } = useProductCategories()
@@ -12,15 +18,19 @@ const FooterNav = () => {
   return (
     <div className="content-container flex flex-col gap-y-8 pt-16 pb-8">
       <div className="flex flex-col gap-y-6 xsmall:flex-row items-start justify-between">
-        <div>
-          <Link href="/" className="text-xl-semi uppercase">
-            Acme
+        <div className="flex items-center ">
+          <Logo />
+          <Link
+            href="/"
+            className={`text-xl-semi items-center ${dancing.className}`}
+          >
+            Sublimahyca
           </Link>
         </div>
         <div className="text-small-regular grid grid-cols-3 gap-x-10 md:gap-x-16">
           {product_categories && (
             <div className="flex flex-col gap-y-2">
-              <span className="text-base-semi">Categories</span>
+              <span className="text-base-semi">Categorias</span>
               <ul className="grid grid-cols-1 gap-2">
                 {product_categories?.slice(0, 6).map((c) => {
                   if (c.parent_category) {
@@ -77,7 +87,7 @@ const FooterNav = () => {
             </div>
           )}
           <div className="flex flex-col gap-y-2">
-            <span className="text-base-semi">Medusa</span>
+            <span className="text-base-semi">Ecommerce</span>
             <ul className="grid grid-cols-1 gap-y-2">
               <li>
                 <a
@@ -85,7 +95,7 @@ const FooterNav = () => {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  GitHub
+                  Política de Privacidad
                 </a>
               </li>
               <li>
@@ -94,16 +104,16 @@ const FooterNav = () => {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Documentation
+                  Condiciones del Servicio
                 </a>
               </li>
               <li>
                 <a
-                  href="https://github.com/medusajs/nextjs-starter-medusa"
+                  href="https://github.com/Dalvae/"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Source code
+                  Shippment
                 </a>
               </li>
             </ul>
@@ -112,7 +122,7 @@ const FooterNav = () => {
       </div>
       <div className="flex flex-col-reverse gap-y-4 justify-center xsmall:items-center xsmall:flex-row xsmall:items-end xsmall:justify-between">
         <span className="text-xsmall-regular text-gray-500">
-          © Copyright 2022 ACME
+          © Copyright 2023 Sublimahyca
         </span>
         <div className="min-w-[316px] flex xsmall:justify-end">
           <CountrySelect />

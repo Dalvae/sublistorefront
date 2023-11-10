@@ -1,4 +1,5 @@
 "use client"
+import Logo from "@modules/common/icons/logo"
 import { Dancing_Script } from "next/font/google"
 import { useMobileMenu } from "@lib/context/mobile-menu-context"
 import Hamburger from "@modules/common/components/hamburger"
@@ -14,6 +15,7 @@ import { useEffect, useState } from "react"
 const dancing = Dancing_Script({
   weight: "700",
   subsets: ["latin"],
+  display: "swap",
 })
 const Nav = () => {
   const pathname = usePathname()
@@ -67,6 +69,7 @@ const Nav = () => {
             }
           )}
         >
+          <Logo />
           <div className="flex-1 basis-0 h-full flex items-center">
             <div className="block small:hidden">
               <Hamburger setOpen={toggle} />
