@@ -120,7 +120,6 @@ const Register = () => {
         >
           Inicia sección
         </button>
-        .
       </span>
     </div>
   )
