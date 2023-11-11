@@ -95,30 +95,30 @@ const Register = () => {
         {authError && (
           <div>
             <span className="text-rose-500 w-full text-small-regular">
-              These credentials do not match our records
+              Estas credenciales no coinciden con nuestro registro
             </span>
           </div>
         )}
         <span className="text-center text-gray-700 text-small-regular mt-6">
-          By creating an account, you agree to Subilimahyca{" "}
+          Al crear una cuenta aceptas los terminos de Sublimahyca{" "}
           <Link href="/content/privacy-policy" className="underline">
-            Privacy Policy
+            Política de privacidad
           </Link>{" "}
           and{" "}
           <Link href="/content/terms-of-use" className="underline">
-            Terms of Use
+            Terminos de uso
           </Link>
           .
         </span>
         <Button className="mt-6">Join</Button>
       </form>
       <span className="text-center text-gray-700 text-small-regular mt-6">
-        Already a member?{" "}
+        ¿Ya eres miembro?{" "}
         <button
           onClick={() => setCurrentView(LOGIN_VIEW.SIGN_IN)}
           className="underline"
         >
-          Sign in
+          Inicia sección
         </button>
         .
       </span>
