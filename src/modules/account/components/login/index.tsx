@@ -74,15 +74,6 @@ const Login = () => {
         )}
         <Button className="mt-6">Enter</Button>
       </form>
-      <span className="text-center text-gray-700 text-small-regular mt-6">
-        ¿No eres miembro?{" "}
-        <button
-          onClick={() => setCurrentView(LOGIN_VIEW.REGISTER)}
-          className="underline"
-        >
-          Unete
-        </button>
-      </span>
       <a
         type="button"
         href="https://backend.sublimahyca.cl/store/auth"
@@ -105,6 +96,15 @@ const Login = () => {
         </svg>
         Sign in with Google
       </a>
+      <span className="text-center text-gray-700 text-small-regular mt-6">
+        ¿No eres miembro?{" "}
+        <button
+          onClick={() => setCurrentView(LOGIN_VIEW.REGISTER)}
+          className="underline"
+        >
+          Unete
+        </button>
+      </span>
     </div>
   )
 }
