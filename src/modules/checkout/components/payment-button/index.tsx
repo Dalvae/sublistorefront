@@ -42,20 +42,19 @@ const PaymentButton: React.FC<PaymentButtonProps> = ({ paymentSession }) => {
     setNotReady(false)
   }, [cart])
 
-  // switch (paymentSession?.provider_id) {
-  //   case "stripe":
-  //     return (
-  //       <StripePaymentButton session={paymentSession} notReady={notReady} />
-  //     )
-  //   case "manual":
-  //     return <ManualTestPaymentButton notReady={notReady} />
-  //   case "paypal":
-  //     return (
-  //       <PayPalPaymentButton notReady={notReady} session={paymentSession} />
-  //     )
-  //   default:
-  //     return <Button disabled>Select a payment method</Button>
-  // }
+  // Aquí puedes agregar lógica adicional dependiendo del proveedor de pago
+  switch (paymentSession?.provider_id) {
+    // case "stripe":
+    //   return <StripePaymentButton session={paymentSession} notReady={notReady} />
+    case "manual":
+      return <ManualTestPaymentButton notReady={notReady} />
+    case "paypal":
+      return (
+        <PayPalPaymentButton notReady={notReady} session={paymentSession} />
+      )
+    default:
+      return <Button disabled>Select a payment method</Button>
+  }
 }
 
 // const StripePaymentButton = ({
