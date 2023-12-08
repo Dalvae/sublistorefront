@@ -5,6 +5,7 @@ import { useCollections, useProductCategories } from "medusa-react"
 import { Text } from "@medusajs/ui"
 import Link from "next/link"
 import MedusaCTA from "../medusa-cta"
+import Logo from "@modules/common/icons/logo"
 
 const FooterNav = () => {
   const { collections } = useCollections()
