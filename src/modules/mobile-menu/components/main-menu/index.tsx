@@ -7,12 +7,6 @@ import { useCollections, useMeCustomer } from "medusa-react"
 import Link from "next/link"
 import ReactCountryFlag from "react-country-flag"
 import { Heading } from "@medusajs/ui"
-import { Dancing_Script } from "@next/font/google"
-const dancing = Dancing_Script({
-  weight: "700",
-  subsets: ["latin"],
-  display: "swap",
-})
 
 const MainMenu = () => {
   const { collections } = useCollections()
@@ -42,8 +36,8 @@ const MainMenu = () => {
           </button>
         </div>
 
-        <Heading className={`text-xl-semi items-center ${dancing.className}`}>
-          Sublimahyca
+        <Heading className="txt-compact-xlarge-plus text-ui-fg-subtle uppercase">
+          Medusa Store
         </Heading>
 
         <div className="flex-1 basis-0 flex justify-end">

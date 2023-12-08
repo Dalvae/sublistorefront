@@ -8,14 +8,14 @@ const EmptyCartMessage = () => {
         level="h1"
         className="flex flex-row text-3xl-regular gap-x-2 items-baseline"
       >
-        Carrito
+        Cart
       </Heading>
       <Text className="text-base-regular mt-4 mb-6 max-w-[32rem]">
-      No tienes nada en tu carrito. Cambiemos eso, usa el enlace de abajo para
-        empezar a explorar nuestros productos.
+        You don&apos;t have anything in your bag. Let&apos;s change that, use
+        the link below to start browsing our products.
       </Text>
       <div>
-        <UnderlineLink href="/store">Explorar productos</UnderlineLink>
+        <UnderlineLink href="/store">Explore products</UnderlineLink>
       </div>
     </div>
   )

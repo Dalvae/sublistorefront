@@ -46,15 +46,15 @@ const Register = () => {
     <div className="max-w-sm flex flex-col items-center mt-12">
       {isSubmitting && (
         <div className="z-10 fixed inset-0 bg-white bg-opacity-50 flex items-center justify-center">
-          <Spinner size={24} />
+          <Spinner />
         </div>
       )}
       <h1 className="text-large-semi uppercase mb-6">
-        Empieza tu Experiencia Sublimahyca
+        Become a Medusa Store Member
       </h1>
       <p className="text-center text-base-regular text-gray-700 mb-4">
-        Crea tu perfil de miembro de Sublimahyca y obtén acceso a una
-        experiencia de compra mejorada.
+        Create your Medusa Store Member profile, and get access to an enhanced
+        shopping experience.
       </p>
       <form className="w-full flex flex-col" onSubmit={onSubmit}>
         <div className="flex flex-col w-full gap-y-2">
@@ -95,31 +95,34 @@ const Register = () => {
         {authError && (
           <div>
             <span className="text-rose-500 w-full text-small-regular">
-              Estas credenciales no coinciden con nuestro registro
+              These credentials do not match our records
             </span>
           </div>
         )}
         <span className="text-center text-gray-700 text-small-regular mt-6">
-          Al crear una cuenta aceptas los terminos de Sublimahyca{" "}
+          By creating an account, you agree to Medusa Store&apos;s{" "}
           <Link href="/content/privacy-policy" className="underline">
-            Política de privacidad
+            Privacy Policy
           </Link>{" "}
           and{" "}
           <Link href="/content/terms-of-use" className="underline">
-            Terminos de uso
+            Terms of Use
           </Link>
           .
         </span>
-        <Button className="mt-6">Join</Button>
+        <Button className="mt-6 w-full" size="xlarge">
+          Join
+        </Button>
       </form>
       <span className="text-center text-gray-700 text-small-regular mt-6">
-        ¿Ya eres miembro?{" "}
+        Already a member?{" "}
         <button
           onClick={() => setCurrentView(LOGIN_VIEW.SIGN_IN)}
           className="underline"
         >
-          Inicia sección
+          Sign in
         </button>
+        .
       </span>
     </div>
   )

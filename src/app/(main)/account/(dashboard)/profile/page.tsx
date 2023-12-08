@@ -2,8 +2,8 @@ import ProfileTemplate from "@modules/account/templates/profile-template"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Perfil",
-  description: "Revisa y edita tu perfil de la tienda",
+  title: "Profile",
+  description: "View and edit your Medusa Store profile.",
 }
 
 export default function Profile() {

@@ -34,13 +34,13 @@ const OrderOverview = () => {
 
   return (
     <div className="w-full flex flex-col items-center gap-y-4">
-      <h2 className="text-large-semi">Nada para mostrar</h2>
+      <h2 className="text-large-semi">Nothing to see here</h2>
       <p className="text-base-regular">
-        No tienes ninguna orden, todavia. Vamos a cambiar eso {":)"}
+        You don&apos;t have any orders yet, let us change that {":)"}
       </p>
       <div className="mt-4">
         <Link href="/" passHref>
-          <Button>Continua comprando</Button>
+          <Button>Continue shopping</Button>
         </Link>
       </div>
     </div>
