@@ -6,6 +6,8 @@ import { Text } from "@medusajs/ui"
 import Link from "next/link"
 import MedusaCTA from "../medusa-cta"
 import Logo from "@modules/common/icons/logo"
+import CountrySelect from "@modules/checkout/components/country-select"
+
 
 const FooterNav = () => {
   const { collections } = useCollections()
