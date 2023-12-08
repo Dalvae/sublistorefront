@@ -33,6 +33,10 @@ module.exports = {
           80: "#1F2937",
           90: "#111827",
         },
+        primary: '#e96d7b',
+        secondary: '#a991f7',
+        accent: '#66b1b3',
+        neutral: '#af4670',
       },
       borderRadius: {
         none: "0px",
