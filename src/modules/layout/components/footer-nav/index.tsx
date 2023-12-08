@@ -7,7 +7,13 @@ import Link from "next/link"
 import MedusaCTA from "../medusa-cta"
 import Logo from "@modules/common/icons/logo"
 import CountrySelect from "@modules/checkout/components/country-select"
+import { Dancing_Script } from "@next/font/google"
 
+const dancing = Dancing_Script({
+  weight: "700",
+  subsets: ["latin"],
+  display: "swap",
+})
 
 const FooterNav = () => {
   const { collections } = useCollections()
