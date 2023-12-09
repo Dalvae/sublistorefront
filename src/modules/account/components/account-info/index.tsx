@@ -76,9 +76,9 @@ const AccountInfo = ({
             }
           )}
         >
-          <Badge className="p-2 my-4" color="green">
+          <div className="bg-green-100 text-green-500 p-4 my-4">
             <span>{label} updated succesfully</span>
-          </Badge>
+          </div>
         </Disclosure.Panel>
       </Disclosure>
 
@@ -94,9 +94,9 @@ const AccountInfo = ({
             }
           )}
         >
-          <Badge className="p-2 my-4" color="red">
+          <div className="bg-rose-100 text-rose-500 p-4 mt-4">
             <span>{errorMessage}</span>
-          </Badge>
+          </div>
         </Disclosure.Panel>
       </Disclosure>
 
