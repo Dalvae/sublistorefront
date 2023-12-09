@@ -7,10 +7,10 @@ import CountrySelect from "../country-select"
 
 const SideMenuItems = {
   Home: "/",
-  Store: "/store",
-  Search: "",
-  Account: "/account",
-  Cart: "/cart",
+  Tienda: "/store",
+  Buscar: "",
+  Cuenta: "/account",
+  Carrito: "/cart",
 }
 
 const SideMenu = ({ searchModalOpen }: { searchModalOpen: () => void }) => {
@@ -44,7 +44,7 @@ const SideMenu = ({ searchModalOpen }: { searchModalOpen: () => void }) => {
                 leaveTo="opacity-0"
               >
                 <Popover.Panel className="flex flex-col absolute w-1/3 2xl:w-1/4 h-[calc(100vh-1rem)] z-30 inset-x-0 text-sm text-ui-fg-on-color m-2 backdrop-blur-2xl">
-                  <div className="flex flex-col h-full bg-[rgba(3,7,18,0.5)] rounded-rounded justify-between p-6">
+                  <div className="flex flex-col h-full bg-[#af4670a0]  rounded-rounded justify-between p-6">
                     <div className="flex justify-end" id="xmark">
                       <button onClick={close}>
                         <XMark />
@@ -95,8 +95,8 @@ const SideMenu = ({ searchModalOpen }: { searchModalOpen: () => void }) => {
                         />
                       </div>
                       <Text className="flex justify-between txt-compact-small">
-                        © {new Date().getFullYear()} Medusa Store. All rights
-                        reserved.
+                        © {new Date().getFullYear()} Sublimahyca Store. All
+                        rights reserved.
                       </Text>
                     </div>
                   </div>
