@@ -17,7 +17,7 @@ export default async function Home() {
     <>
       <Hero />
       <Suspense fallback={<SkeletonHomepageProducts count={count} />}>
-        <FeaturedProducts collections={collections} />
+        {/* <FeaturedProducts collections={collections} /> */}
       </Suspense>
     </>
   )
