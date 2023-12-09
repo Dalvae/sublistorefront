@@ -9,6 +9,14 @@ import SideMenu from "@modules/layout/components/side-menu"
 import MobileMenu from "@modules/mobile-menu/templates"
 import DesktopSearchModal from "@modules/search/templates/desktop-search-modal"
 import Link from "next/link"
+import clsx from "clsx"
+import { Dancing_Script } from "@next/font/google"
+
+const dancing = Dancing_Script({
+  weight: "700",
+  subsets: ["latin"],
+  display: "swap",
+})
 
 const Nav = () => {
   const { toggle } = useMobileMenu()
@@ -34,9 +42,9 @@ const Nav = () => {
           <div className="flex items-center h-full">
             <Link
               href="/"
-              className="txt-compact-xlarge-plus hover:text-ui-fg-base uppercase"
+              className={`txt-compact-xlarge-plus hover:text-ui-fg-base ${dancing.className}`}
             >
-              Medusa Store
+              Sublimahyca
             </Link>
           </div>
 
@@ -50,7 +58,7 @@ const Nav = () => {
                 />
               )}
               <Link className="hover:text-ui-fg-base" href="/account">
-                Account
+                Cuenta
               </Link>
             </div>
             <CartDropdown />
