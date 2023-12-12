@@ -20,7 +20,7 @@ const FooterNav = () => {
   const { product_categories } = useProductCategories()
 
   return (
-    <div className="content-container flex flex-col gap-y-8 pt-16 pb-8">
+    <div className="content-container flex flex-col gap-y-8 pt-16 pb-8 bg-primary">
       <div className="flex flex-col gap-y-6 xsmall:flex-row items-start justify-between">
         <div className="flex items-center ">
           <Logo />
