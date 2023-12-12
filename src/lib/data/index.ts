@@ -131,26 +131,40 @@ export async function getCollectionsList(
   offset: number = 0,
   limit: number = 100
 ): Promise<{ collections: ProductCollection[]; count: number }> {
-  try {
-    const response = await fetch(
-      `${API_BASE_URL}/api/collections?offset=${offset}&limit=${limit}`
+  if (MEDUSA_V2_ENABLED) {
+    const { collections, count } = await fetch(
+      `${API_BASE_URL}/api/collections?offset=${offset}&limit=${limit}`,
+      {
+        next: {
+          tags: ["collections"],
+        },
+      }
     )
-
-    if (!response.ok) {
-      // Manejo de respuestas no exitosas
-      throw new Error(`HTTP Error: ${response.status}`)
-    }
-
-    const { collections, count } = await response.json()
+      .then((res) => res.json())
+      .catch((err) => {
+        throw err
+      })
 
     return {
       collections,
       count,
     }
-  } catch (error) {
-    // Manejo detallado de errores
-    console.error("Error al obtener las colecciones:", error)
-    throw error // O maneja el error de manera más específica si es necesario
+  }
+
+  const { collections, count } = await medusaRequest("GET", "/collections", {
+    query: {
+      offset,
+      limit,
+    },
+  })
+    .then((res) => res.body)
+    .catch((err) => {
+      throw err
+    })
+
+  return {
+    collections,
+    count,
   }
 }
 
