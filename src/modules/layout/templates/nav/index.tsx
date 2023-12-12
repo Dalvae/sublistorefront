@@ -42,7 +42,7 @@ const Nav = () => {
           <div className="flex items-center h-full">
             <Link
               href="/"
-              className={`txt-compact-xlarge-plus hover:text-ui-fg-base ${dancing.className}`}
+              className={`text-xl-semi text-white ${dancing.className}`}
             >
               Sublimahyca
             </Link>
