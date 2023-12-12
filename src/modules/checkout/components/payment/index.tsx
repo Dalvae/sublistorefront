@@ -13,7 +13,7 @@ import Ideal from "@modules/common/icons/ideal"
 import Bancontact from "@modules/common/icons/bancontact"
 import { useElements } from "@stripe/react-stripe-js"
 import { useState } from "react"
-import Webpayico from "@modules/common/icons/ideal"
+import Webpayico from "@modules/common/icons/wepay"
 
 /* Map of payment provider_id to their title and icon. Add in any payment providers you want to use. */
 export const paymentInfoMap: Record<
