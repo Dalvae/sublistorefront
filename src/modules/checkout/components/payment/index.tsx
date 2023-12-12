@@ -13,6 +13,7 @@ import Ideal from "@modules/common/icons/ideal"
 import Bancontact from "@modules/common/icons/bancontact"
 import { useElements } from "@stripe/react-stripe-js"
 import { useState } from "react"
+import Webpayico from "@modules/common/icons/ideal"
 
 /* Map of payment provider_id to their title and icon. Add in any payment providers you want to use. */
 export const paymentInfoMap: Record<
@@ -30,6 +31,10 @@ export const paymentInfoMap: Record<
   "stripe-bancontact": {
     title: "Bancontact",
     icon: <Bancontact />,
+  },
+  Webpay: {
+    title: "Webpay",
+    icon: <Webpayico />,
   },
   manual: {
     title: "Test payment",
@@ -93,6 +98,8 @@ const Payment = () => {
     clearErrors,
   } = useFormState
 
+  const [redirectUrl, setRedirectUrl] = useState(null)
+
   const setPaymentSession = (providerId: string) => {
     if (cart) {
       setPaymentSessionMutation(
@@ -102,6 +109,13 @@ const Payment = () => {
         {
           onSuccess: ({ cart }) => {
             setCart(cart)
+            // Aquí se verifica si el proveedor de pago es Webpay y si hay una URL de redirección
+            if (
+              cart.payment_session?.provider_id === "webpay" &&
+              cart.payment_session_data?.redirect_url
+            ) {
+              setRedirectUrl(cart.payment_session_data.redirect_url)
+            }
           },
           onError: () =>
             setError(
