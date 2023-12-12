@@ -53,6 +53,8 @@ export default async function medusaRequest(
       body,
     }
   } catch (error: any) {
+    console.error("Error en la solicitud fetch:", error)
+    console.error("Respuesta del servidor:", error.response)
     throw {
       error: error.message,
     }
