@@ -109,13 +109,6 @@ const Payment = () => {
         {
           onSuccess: ({ cart }) => {
             setCart(cart)
-            // Aquí se verifica si el proveedor de pago es Webpay y si hay una URL de redirección
-            // if (
-            //   cart.payment_session?.provider_id === "webpay" &&
-            //   cart.payment_session_data?.redirect_url
-            // ) {
-            //   setRedirectUrl(cart.payment_session_data.redirect_url)
-            // }
           },
           onError: () =>
             setError(
