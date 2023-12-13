@@ -48,7 +48,8 @@
     "sharp": "^0.30.7",
     "tailwindcss-radix": "^2.8.0",
     "webpack": "^5",
-    "@next/font" : "14.0.4"
+    "@next/font" : "14.0.4",
+    "transbank-sdk": "4.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
