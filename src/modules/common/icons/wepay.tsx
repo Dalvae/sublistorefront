@@ -2,14 +2,15 @@ import React from "react"
 import { IconProps } from "types/icon"
 
 const Webpayico: React.FC<IconProps> = ({
-  size = "40",
+  width = "60", // Default width set to 60
+  height = "30", // Default height set to 30
   color = "currentColor",
   ...attributes
 }) => {
   return (
     <svg
-      width={size}
-      height={size}
+      width={width}
+      height={height}
       viewBox="0 0 60 30"
       role="img"
       xmlns="http://www.w3.org/2000/svg"
