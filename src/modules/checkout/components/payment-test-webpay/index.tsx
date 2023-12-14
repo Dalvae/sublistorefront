@@ -8,7 +8,7 @@ const TestWebpayButton = () => {
   const handleWebpayTest = async () => {
     // Check if the cart and payment session data exist
     if (cart && cart.payment_session && cart.payment_session.data) {
-      // Assuming transbankToken is part of the payment session data
+      // Assuming transbankToken and redirectUrl are part of the payment session data
       const transbankToken = cart.payment_session.data.transbankToken
       const redirectUrl = cart.payment_session.data.redirectUrl
 
@@ -30,3 +30,5 @@ const TestWebpayButton = () => {
 
   return <button onClick={handleWebpayTest}>Test Webpay Payment</button>
 }
+
+export default TestWebpayButton
