@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { useCart } from "medusa-react"
 
-// Definiendo una interfaz para los datos de Transbank
+// Define una interfaz para los datos de Transbank
 interface TransbankData {
   token: string
   url: string
@@ -16,7 +16,10 @@ const TestWebpayButton = () => {
       const transbankToken = cart.payment_session.data.transbankToken
       const redirectUrl = cart.payment_session.data.redirectUrl
 
-      if (!!transbankToken && redirectUrl) {
+      if (
+        typeof transbankToken === "string" &&
+        typeof redirectUrl === "string"
+      ) {
         setTransbankData({ token: transbankToken, url: redirectUrl })
       } else {
         console.log(
