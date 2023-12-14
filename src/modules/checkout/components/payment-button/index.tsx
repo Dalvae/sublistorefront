@@ -6,6 +6,7 @@ import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js"
 import { useElements, useStripe } from "@stripe/react-stripe-js"
 import { useCart } from "medusa-react"
 import React, { useEffect, useState } from "react"
+import TestWebpayButton from "../payment-test-webpay"
 
 type PaymentButtonProps = {
   paymentSession?: PaymentSession | null
@@ -34,6 +35,8 @@ const PaymentButton: React.FC<PaymentButtonProps> = ({ paymentSession }) => {
       return (
         <PayPalPaymentButton notReady={notReady} session={paymentSession} />
       )
+    case "Webpay":
+      return <TestWebpayButton />
     default:
       return <Button disabled>Select a payment method</Button>
   }
