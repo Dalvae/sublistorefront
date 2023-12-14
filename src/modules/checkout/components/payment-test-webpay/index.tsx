@@ -18,7 +18,7 @@ const WebpayButton = () => {
       if (cart && cart.payment_session && cart.payment_session.data) {
         const transbankToken = cart.payment_session.data.transbankToken
         const redirectUrl = cart.payment_session.data.redirectUrl
-        const buyOrder = cart.payment_session.data.resource_id as string
+        const buyOrder = cart.payment_session.data.buysOrder as string
 
         console.log("Transbank Token:", transbankToken) // Depuración
         console.log("Redirect URL:", redirectUrl) // Depuración
