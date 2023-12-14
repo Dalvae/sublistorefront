@@ -18,7 +18,7 @@ const WebpayButton = () => {
       if (cart && cart.payment_session && cart.payment_session.data) {
         const transbankToken = cart.payment_session.data.transbankToken
         const redirectUrl = cart.payment_session.data.redirectUrl
-        const buyOrder = cart.payment_session.data.buyOrder as string
+        const buyOrder = cart.payment_session.data.resource_id as string
 
         if (
           typeof transbankToken === "string" &&
@@ -28,7 +28,7 @@ const WebpayButton = () => {
             token: transbankToken,
             url: redirectUrl,
             buyOrder,
-          }) // Incluye el buyOrder
+          })
         }
       }
     }
