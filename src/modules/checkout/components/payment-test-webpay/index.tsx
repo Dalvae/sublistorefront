@@ -5,6 +5,7 @@ import { useCart } from "medusa-react"
 interface TransbankData {
   token: string
   url: string
+  buyOrder?: string // Agrega la propiedad buyOrder
 }
 
 const WebpayButton = () => {
@@ -17,12 +18,17 @@ const WebpayButton = () => {
       if (cart && cart.payment_session && cart.payment_session.data) {
         const transbankToken = cart.payment_session.data.transbankToken
         const redirectUrl = cart.payment_session.data.redirectUrl
+        const buyOrder = cart.payment_session.data.buyOrder as string
 
         if (
           typeof transbankToken === "string" &&
           typeof redirectUrl === "string"
         ) {
-          setTransbankData({ token: transbankToken, url: redirectUrl })
+          setTransbankData({
+            token: transbankToken,
+            url: redirectUrl,
+            buyOrder,
+          }) // Incluye el buyOrder
         }
       }
     }
@@ -48,15 +54,30 @@ const WebpayButton = () => {
     }
   }
 
+  const handleTestClick = () => {
+    if (transbankData && transbankData.buyOrder) {
+      console.log("Buy Order:", transbankData.buyOrder) // Hace console.log del buyOrder
+    }
+  }
+
   return (
-    <button
-      onClick={handleSubmit}
-      style={{ backgroundColor: "#561456", color: "white" }}
-      className="rounded-md bg-gradient-to-r from-purple-400 to-blue-500 hover:bg-gradient-to-br focus:outline-none focus:ring gap-x-1.5 px-3 py-1.5 !min-h-[0] h-10"
-      disabled={!transbankData} // Deshabilita el botón si los datos aún no están cargados
-    >
-      Ir a pagar
-    </button>
+    <div>
+      <button
+        onClick={handleSubmit}
+        style={{ backgroundColor: "#561456", color: "white" }}
+        className="rounded-md bg-gradient-to-r from-purple-400 to-blue-500 hover:bg-gradient-to-br focus:outline-none focus:ring gap-x-1.5 px-3 py-1.5 !min-h-[0] h-10"
+        disabled={!transbankData} // Deshabilita el botón si los datos aún no están cargados
+      >
+        Ir a pagar
+      </button>
+      <button
+        onClick={handleTestClick}
+        style={{ backgroundColor: "green", color: "white" }}
+        className="rounded-md ml-2"
+      >
+        Test
+      </button>
+    </div>
   )
 }
 
