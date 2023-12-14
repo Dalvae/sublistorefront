@@ -20,6 +20,10 @@ const WebpayButton = () => {
         const redirectUrl = cart.payment_session.data.redirectUrl
         const buyOrder = cart.payment_session.data.resource_id as string
 
+        console.log("Transbank Token:", transbankToken) // Depuración
+        console.log("Redirect URL:", redirectUrl) // Depuración
+        console.log("Buy Order:", buyOrder) // Depuración
+
         if (
           typeof transbankToken === "string" &&
           typeof redirectUrl === "string"
@@ -55,7 +59,7 @@ const WebpayButton = () => {
   }
 
   const handleTestClick = () => {
-    if (transbankData && transbankData.buyOrder) {
+    if (transbankData) {
       console.log("Buy Order:", transbankData.buyOrder) // Hace console.log del buyOrder
     }
   }
