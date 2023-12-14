@@ -2,7 +2,7 @@ import React from "react"
 import { IconProps } from "types/icon"
 
 const Webpayico: React.FC<IconProps> = ({
-  size = "30",
+  size = "40",
   color = "currentColor",
   ...attributes
 }) => {
