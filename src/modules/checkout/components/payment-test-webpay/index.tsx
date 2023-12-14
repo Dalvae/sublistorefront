@@ -10,23 +10,19 @@ interface TransbankData {
 const WebpayButton = () => {
   const { cart } = useCart()
   const [transbankData, setTransbankData] = useState<TransbankData | null>(null)
-  const [buyOrder, setBuyOrder] = useState<string | null>(null) // Nuevo estado para almacenar buyOrder
+
   useEffect(() => {
     // Función para cargar los datos de Transbank
     const loadTransbankData = async () => {
       if (cart && cart.payment_session && cart.payment_session.data) {
         const transbankToken = cart.payment_session.data.transbankToken
         const redirectUrl = cart.payment_session.data.redirectUrl
-        const buyOrderFromCart = cart.payment_session.data.buyOrder // Asumiendo que buyOrder se almacena aquí
 
         if (
           typeof transbankToken === "string" &&
-          typeof redirectUrl === "string" &&
-          typeof buyOrderFromCart === "string"
+          typeof redirectUrl === "string"
         ) {
           setTransbankData({ token: transbankToken, url: redirectUrl })
-          setBuyOrder(buyOrderFromCart) // Establecer buyOrder en el estado
-          console.log("Buy Order:", buyOrderFromCart) // Realizar console.log de buyOrder
         }
       }
     }
