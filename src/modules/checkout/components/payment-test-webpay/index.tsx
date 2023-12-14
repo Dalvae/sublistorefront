@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { useCart } from "medusa-react"
 
 // Define una interfaz para los datos de Transbank
@@ -7,31 +7,29 @@ interface TransbankData {
   url: string
 }
 
-const TestWebpayButton = () => {
+const WebpayButton = () => {
   const { cart } = useCart()
   const [transbankData, setTransbankData] = useState<TransbankData | null>(null)
-  const [isDataLoaded, setIsDataLoaded] = useState(false)
 
-  const handleWebpayTest = async () => {
-    if (cart && cart.payment_session && cart.payment_session.data) {
-      const transbankToken = cart.payment_session.data.transbankToken
-      const redirectUrl = cart.payment_session.data.redirectUrl
+  useEffect(() => {
+    // Función para cargar los datos de Transbank
+    const loadTransbankData = async () => {
+      if (cart && cart.payment_session && cart.payment_session.data) {
+        const transbankToken = cart.payment_session.data.transbankToken
+        const redirectUrl = cart.payment_session.data.redirectUrl
 
-      if (
-        typeof transbankToken === "string" &&
-        typeof redirectUrl === "string"
-      ) {
-        setTransbankData({ token: transbankToken, url: redirectUrl })
-        setIsDataLoaded(true)
-      } else {
-        console.log(
-          "Datos de Transbank o URL de redireccionamiento no encontrados"
-        )
+        if (
+          typeof transbankToken === "string" &&
+          typeof redirectUrl === "string"
+        ) {
+          setTransbankData({ token: transbankToken, url: redirectUrl })
+        }
       }
-    } else {
-      console.log("Datos del carrito o de la sesión de pago no disponibles")
     }
-  }
+
+    // Carga los datos al montar el componente
+    loadTransbankData()
+  }, [cart])
 
   const handleSubmit = () => {
     if (transbankData) {
@@ -52,12 +50,14 @@ const TestWebpayButton = () => {
 
   return (
     <button
-      onClick={isDataLoaded ? handleSubmit : handleWebpayTest}
+      onClick={handleSubmit}
       style={{ backgroundColor: "#561456", color: "white" }}
+      className="rounded-md bg-gradient-to-r from-purple-400 to-blue-500 hover:bg-gradient-to-br focus:outline-none focus:ring"
+      disabled={!transbankData} // Deshabilita el botón si los datos aún no están cargados
     >
-      {isDataLoaded ? "Ir a pagar" : "Test Webpay Payment"}
+      Ir a pagar
     </button>
   )
 }
 
-export default TestWebpayButton
+export default WebpayButton
