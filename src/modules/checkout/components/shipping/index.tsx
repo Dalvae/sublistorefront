@@ -107,8 +107,8 @@ const Shipping: React.FC<ShippingProps> = ({ cart }) => {
           amount: option.amount || 0,
           region: cart.region,
           locale: "es-CL",
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 2,
+          minimumFractionDigits: 0,
+          maximumFractionDigits: 0,
         }),
       }))
     }
@@ -216,8 +216,8 @@ const Shipping: React.FC<ShippingProps> = ({ cart }) => {
                     amount: cart.shipping_methods[0].price,
                     region: cart.region,
                     locale: "es-CL",
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2,
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 0,
                   })
                     .replace(/,/g, "")
                     .replace(/\./g, ",")}

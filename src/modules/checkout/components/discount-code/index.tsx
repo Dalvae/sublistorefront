@@ -41,8 +41,8 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
           amount: discounts[0].rule.value,
           region: region,
           locale: "es-CL",
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 2,
+          minimumFractionDigits: 0,
+          maximumFractionDigits: 0,
         })}`
 
       default:
@@ -144,8 +144,8 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
                     region: region,
                     amount: gc.balance,
                     locale: "es-CL",
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2,
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 0,
                   })}
                 </Text>
                 <button

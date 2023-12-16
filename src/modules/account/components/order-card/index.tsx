@@ -33,8 +33,8 @@ const OrderCard = ({ order }: OrderCardProps) => {
             region: order.region,
             includeTaxes: false,
             locale: "es-CL",
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2,
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
           })}
         </span>
         <span className="pl-2">{`${numberOfLines} ${
