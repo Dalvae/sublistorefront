@@ -24,6 +24,8 @@ const CartTotals: React.FC<CartTotalsProps> = ({ data }) => {
       region: data.region,
       includeTaxes: false,
       locale: "es-CL",
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
     })
   }
 

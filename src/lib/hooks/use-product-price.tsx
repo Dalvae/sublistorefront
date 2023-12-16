@@ -50,12 +50,16 @@ const useProductPrice = ({ id, variantId }: useProductPriceProps) => {
         region: cart.region,
         includeTaxes: false,
         locale: "es-CL",
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0,
       }),
       original_price: formatAmount({
         amount: cheapestVariant.original_price,
         region: cart.region,
         includeTaxes: false,
         locale: "es-CL",
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0,
       }),
       price_type: cheapestVariant.calculated_price_type,
       percentage_diff: getPercentageDiff(
@@ -84,12 +88,16 @@ const useProductPrice = ({ id, variantId }: useProductPriceProps) => {
         region: cart.region,
         includeTaxes: false,
         locale: "es-CL",
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0,
       }),
       original_price: formatAmount({
         amount: variant.original_price,
         region: cart.region,
         includeTaxes: false,
         locale: "es-CL",
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0,
       }),
       price_type: variant.calculated_price_type,
       percentage_diff: getPercentageDiff(

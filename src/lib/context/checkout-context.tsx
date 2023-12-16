@@ -171,6 +171,10 @@ export const CheckoutProvider = ({ children }: CheckoutProviderProps) => {
           amount: option.amount || 0,
           region: cart.region,
           locale: "es-CL",
+          minimumFractionDigits: 0,
+          maximumFractionDigits: 0,
+          minimumFractionDigits: 0,
+          maximumFractionDigits: 0,
         }),
       }))
     }

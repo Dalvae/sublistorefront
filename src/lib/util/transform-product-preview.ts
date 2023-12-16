@@ -34,11 +34,17 @@ const transformProductPreview = (
             amount: cheapestVariant.calculated_price,
             region: region,
             includeTaxes: false,
+            locale: "es-CL",
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
           }),
           original_price: formatAmount({
             amount: cheapestVariant.original_price,
             region: region,
             includeTaxes: false,
+            locale: "es-CL",
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
           }),
           difference: getPercentageDiff(
             cheapestVariant.original_price,

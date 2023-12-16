@@ -82,6 +82,8 @@ export const findCheapestPrice = (variants: Variant[], region: Region) => {
       amount: cheapestPrice.amount,
       region: region,
       locale: "es-CL",
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
     })
   }
 
