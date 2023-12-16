@@ -20,8 +20,17 @@ const ProductActionsInner: React.FC<ProductActionsProps> = ({ product }) => {
 
   const price = useProductPrice({ id: product.id!, variantId: variant?.id })
 
+  console.log("Precio del producto:", price)
+  console.log("Variantes del producto:", product.variants)
+  console.log("Opciones seleccionadas:", options)
+  console.log("Variant seleccionada:", variant)
+  console.log("En stock:", inStock)
+
   const selectedPrice = useMemo(() => {
     const { variantPrice, cheapestPrice } = price
+
+    console.log("Precio de la variante seleccionada:", variantPrice)
+    console.log("Precio más barato:", cheapestPrice)
 
     return variantPrice || cheapestPrice || null
   }, [price])
