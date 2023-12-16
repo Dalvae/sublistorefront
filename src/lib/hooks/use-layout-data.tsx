@@ -91,7 +91,7 @@ const fetchFeaturedProducts = async (
                 includeTaxes: false,
                 locale: "es-CL",
                 minimumFractionDigits: 2,
-                maximumFractionDigits: 0,
+                maximumFractionDigits: 2,
               }),
               original_price: formatAmount({
                 amount: cheapestVariant.original_price,
@@ -99,7 +99,7 @@ const fetchFeaturedProducts = async (
                 includeTaxes: false,
                 locale: "es-CL",
                 minimumFractionDigits: 2,
-                maximumFractionDigits: 0,
+                maximumFractionDigits: 2,
               }),
               difference: getPercentageDiff(
                 cheapestVariant.original_price,

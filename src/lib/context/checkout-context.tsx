@@ -172,7 +172,7 @@ export const CheckoutProvider = ({ children }: CheckoutProviderProps) => {
           region: cart.region,
           locale: "es-CL",
           minimumFractionDigits: 2,
-          maximumFractionDigits: 0,
+          maximumFractionDigits: 2,
         }),
       }))
     }

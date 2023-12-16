@@ -35,7 +35,7 @@ const LineItemPrice = ({
                   includeTaxes: false,
                   locale: "es-CL",
                   minimumFractionDigits: 2,
-                  maximumFractionDigits: 0,
+                  maximumFractionDigits: 2,
                 })}
               </span>
             </p>
@@ -57,7 +57,7 @@ const LineItemPrice = ({
             includeTaxes: false,
             locale: "es-CL",
             minimumFractionDigits: 2,
-            maximumFractionDigits: 0,
+            maximumFractionDigits: 2,
           })}
         </span>
       </div>
