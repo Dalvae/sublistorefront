@@ -19,6 +19,13 @@ const LineItemUnitPrice = ({
   const hasReducedPrice = (originalPrice * item.quantity || 0) > item.total!
   const reducedPrice = (item.total || 0) / item.quantity!
 
+  // Agregando console.log para debugging
+  console.log("Precio original:", originalPrice)
+  console.log("Cantidad:", item.quantity)
+  console.log("Total del artículo:", item.total)
+  console.log("Precio reducido:", reducedPrice)
+  console.log("Tiene precio reducido:", hasReducedPrice)
+
   return (
     <div className="flex flex-col text-ui-fg-muted justify-center h-full">
       {hasReducedPrice && (
