@@ -3,7 +3,7 @@ const MedusaCTA = () => {
     <div className="py-4 flex justify-center items-center w-full">
       <div className="content-container flex justify-center flex-1">
         <a href="https://github.com/Dalvae" target="_blank" rel="noreferrer">
-          <span className="text-xsmall-regular text-gray-500">
+          <span className="text-xsmall-regular text-white-500">
             Creado por Dalvae
           </span>
         </a>
