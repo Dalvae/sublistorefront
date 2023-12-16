@@ -9,13 +9,13 @@ const SignInPrompt = () => {
           ¿Ya tienes una cuenta?
         </Heading>
         <Text className="txt-medium text-ui-fg-subtle mt-2">
-          Logea para una mejor experiencia
+          Inicia sección para una mejor experiencia
         </Text>
       </div>
       <div>
         <Link href="/account/login">
           <Button variant="secondary" className="h-10">
-            Inicia seccion
+            Inicia sección
           </Button>
         </Link>
       </div>
