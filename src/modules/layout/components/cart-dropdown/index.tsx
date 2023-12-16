@@ -112,7 +112,7 @@ const CartDropdown = () => {
                         region: cart.region,
                         includeTaxes: false,
                         locale: "es-CL",
-                        minimumFractionDigits: 0,
+                        minimumFractionDigits: 2,
                         maximumFractionDigits: 0,
                       })}
                     </span>

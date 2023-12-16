@@ -50,7 +50,7 @@ const ShippingDetails = ({ order }: ShippingDetailsProps) => {
               amount: order.shipping_methods[0].price,
               region: order.region,
               locale: "es-CL",
-              minimumFractionDigits: 0,
+              minimumFractionDigits: 2,
               maximumFractionDigits: 0,
             })
               .replace(/,/g, "")

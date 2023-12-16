@@ -34,7 +34,7 @@ const LineItemPrice = ({
                   region: region,
                   includeTaxes: false,
                   locale: "es-CL",
-                  minimumFractionDigits: 0,
+                  minimumFractionDigits: 2,
                   maximumFractionDigits: 0,
                 })}
               </span>
@@ -56,7 +56,7 @@ const LineItemPrice = ({
             region: region,
             includeTaxes: false,
             locale: "es-CL",
-            minimumFractionDigits: 0,
+            minimumFractionDigits: 2,
             maximumFractionDigits: 0,
           })}
         </span>

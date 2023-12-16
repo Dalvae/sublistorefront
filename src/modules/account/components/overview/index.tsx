@@ -132,7 +132,7 @@ const Overview = ({ orders, customer }: OverviewProps) => {
                                   region: order.region,
                                   includeTaxes: false,
                                   locale: "es-CL",
-                                  minimumFractionDigits: 0,
+                                  minimumFractionDigits: 2,
                                   maximumFractionDigits: 0,
                                 })}
                               </span>
