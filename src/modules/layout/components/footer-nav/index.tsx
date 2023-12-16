@@ -132,6 +132,7 @@ const FooterNav = () => {
           <CountrySelect />
         </div>
       </div>
+      <MedusaCTA />
     </div>
   )
 }
