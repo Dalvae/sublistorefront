@@ -173,8 +173,6 @@ export const CheckoutProvider = ({ children }: CheckoutProviderProps) => {
           locale: "es-CL",
           minimumFractionDigits: 0,
           maximumFractionDigits: 0,
-          minimumFractionDigits: 0,
-          maximumFractionDigits: 0,
         }),
       }))
     }
