@@ -131,6 +131,7 @@ const Overview = ({ orders, customer }: OverviewProps) => {
                                   amount: order.total,
                                   region: order.region,
                                   includeTaxes: false,
+                                  locale: "es-CL",
                                 })}
                               </span>
                             </div>

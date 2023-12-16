@@ -49,6 +49,7 @@ const PaymentDetails = ({ order }: PaymentDetailsProps) => {
                     : `${formatAmount({
                         amount: payment.amount,
                         region: order.region,
+                        locale: "es-CL",
                       })} paid at ${new Date(
                         payment.created_at
                       ).toLocaleString()}`}

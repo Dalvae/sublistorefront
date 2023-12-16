@@ -111,6 +111,7 @@ const CartDropdown = () => {
                         amount: cart.subtotal || 0,
                         region: cart.region,
                         includeTaxes: false,
+                        locale: "es-CL",
                       })}
                     </span>
                   </div>
@@ -131,7 +132,9 @@ const CartDropdown = () => {
                   <div>
                     <Link href="/store">
                       <>
-                        <span className="sr-only">Ir a todos los productos</span>
+                        <span className="sr-only">
+                          Ir a todos los productos
+                        </span>
                         <Button onClick={close}>Explorar productos</Button>
                       </>
                     </Link>

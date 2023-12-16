@@ -32,6 +32,7 @@ const OrderCard = ({ order }: OrderCardProps) => {
             amount: order.total,
             region: order.region,
             includeTaxes: false,
+            locale: "es-CL",
           })}
         </span>
         <span className="pl-2">{`${numberOfLines} ${

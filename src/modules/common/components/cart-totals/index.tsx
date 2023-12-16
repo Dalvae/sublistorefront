@@ -23,6 +23,7 @@ const CartTotals: React.FC<CartTotalsProps> = ({ data }) => {
       amount: amount || 0,
       region: data.region,
       includeTaxes: false,
+      locale: "es-CL",
     })
   }
 

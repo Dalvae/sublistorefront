@@ -49,6 +49,7 @@ const ShippingDetails = ({ order }: ShippingDetailsProps) => {
             {formatAmount({
               amount: order.shipping_methods[0].price,
               region: order.region,
+              locale: "es-CL",
             })
               .replace(/,/g, "")
               .replace(/\./g, ",")}

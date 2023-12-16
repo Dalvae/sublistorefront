@@ -170,6 +170,7 @@ export const CheckoutProvider = ({ children }: CheckoutProviderProps) => {
         price: formatAmount({
           amount: option.amount || 0,
           region: cart.region,
+          locale: "es-CL",
         }),
       }))
     }

@@ -106,6 +106,7 @@ const Shipping: React.FC<ShippingProps> = ({ cart }) => {
         price: formatAmount({
           amount: option.amount || 0,
           region: cart.region,
+          locale: "es-CL",
         }),
       }))
     }
@@ -212,6 +213,7 @@ const Shipping: React.FC<ShippingProps> = ({ cart }) => {
                   {formatAmount({
                     amount: cart.shipping_methods[0].price,
                     region: cart.region,
+                    locale: "es-CL",
                   })
                     .replace(/,/g, "")
                     .replace(/\./g, ",")}

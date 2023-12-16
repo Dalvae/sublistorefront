@@ -81,6 +81,7 @@ export const findCheapestPrice = (variants: Variant[], region: Region) => {
     return formatAmount({
       amount: cheapestPrice.amount,
       region: region,
+      locale: "es-CL",
     })
   }
 

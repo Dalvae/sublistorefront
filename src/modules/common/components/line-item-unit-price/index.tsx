@@ -32,6 +32,7 @@ const LineItemUnitPrice = ({
                 amount: originalPrice,
                 region: region,
                 includeTaxes: false,
+                locale: "es-CL",
               })}
             </span>
           </p>
@@ -51,6 +52,7 @@ const LineItemUnitPrice = ({
           amount: reducedPrice || item.unit_price || 0,
           region: region,
           includeTaxes: false,
+          locale: "es-CL",
         })}
       </span>
     </div>

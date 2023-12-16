@@ -11,7 +11,12 @@ const OrderSummary = ({ order }: OrderSummaryProps) => {
       return
     }
 
-    return formatAmount({ amount, region: order.region, includeTaxes: false })
+    return formatAmount({
+      amount,
+      region: order.region,
+      includeTaxes: false,
+      locale: "es-CL",
+    })
   }
 
   return (

@@ -40,6 +40,7 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
         return `- ${formatAmount({
           amount: discounts[0].rule.value,
           region: region,
+          locale: "es-CL",
         })}`
 
       default:
@@ -137,7 +138,11 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
                   <span className="truncate">{gc.code}</span>
                 </Text>
                 <Text className="font-semibold">
-                  {formatAmount({ region: region, amount: gc.balance })}
+                  {formatAmount({
+                    region: region,
+                    amount: gc.balance,
+                    locale: "es-CL",
+                  })}
                 </Text>
                 <button
                   className="flex items-center gap-x-2 !background-transparent !border-none"

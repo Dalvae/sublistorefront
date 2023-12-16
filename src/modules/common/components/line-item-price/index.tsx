@@ -33,6 +33,7 @@ const LineItemPrice = ({
                   amount: originalPrice,
                   region: region,
                   includeTaxes: false,
+                  locale: "es-CL",
                 })}
               </span>
             </p>
@@ -52,6 +53,7 @@ const LineItemPrice = ({
             amount: item.total || 0,
             region: region,
             includeTaxes: false,
+            locale: "es-CL",
           })}
         </span>
       </div>
