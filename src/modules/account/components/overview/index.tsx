@@ -6,6 +6,7 @@ import Package from "@modules/common/icons/package"
 import User from "@modules/common/icons/user"
 import { formatAmount } from "medusa-react"
 import Link from "next/link"
+import { adjustPriceForZeroDecimalCurrency } from "@lib/util/prices"
 
 type OverviewProps = {
   orders?: Order[]
