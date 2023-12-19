@@ -4,6 +4,7 @@ import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
 import { formatAmount } from "medusa-react"
 import { ProductPreviewType } from "types/global"
 import { CalculatedVariant } from "types/medusa"
+import { adjustPriceForZeroDecimalCurrency } from "@lib/util/prices"
 
 const transformProductPreview = (
   product: PricedProduct,
@@ -31,7 +32,11 @@ const transformProductPreview = (
     price: cheapestVariant
       ? {
           calculated_price: formatAmount({
-            amount: cheapestVariant.calculated_price,
+            amount: adjustPriceForZeroDecimalCurrency(
+              cheapestVariant.calculated_price,
+              region.currency_code
+            ),
+
             region: region,
             includeTaxes: false,
             locale: "es-CL",
@@ -39,7 +44,10 @@ const transformProductPreview = (
             maximumFractionDigits: 0,
           }),
           original_price: formatAmount({
-            amount: cheapestVariant.original_price,
+            amount: adjustPriceForZeroDecimalCurrency(
+              cheapestVariant.original_price,
+              region.currency_code
+            ),
             region: region,
             includeTaxes: false,
             locale: "es-CL",

@@ -1,6 +1,7 @@
 import { formatAmount, useCart, useProducts } from "medusa-react"
 import { useEffect, useMemo } from "react"
 import { CalculatedVariant } from "types/medusa"
+import { adjustPriceForZeroDecimalCurrency } from "@lib/util/prices"
 
 type useProductPriceProps = {
   id: string
@@ -43,10 +44,18 @@ const useProductPrice = ({ id, variantId }: useProductPriceProps) => {
     const cheapestVariant = variants.reduce((prev, curr) => {
       return prev.calculated_price < curr.calculated_price ? prev : curr
     })
+    const adjustedCalculatedPrice = adjustPriceForZeroDecimalCurrency(
+      cheapestVariant.calculated_price,
+      cart?.region?.currency_code
+    )
+    const adjustedOriginalPrice = adjustPriceForZeroDecimalCurrency(
+      cheapestVariant.original_price,
+      cart?.region?.currency_code
+    )
 
     return {
       calculated_price: formatAmount({
-        amount: cheapestVariant.calculated_price,
+        amount: adjustedCalculatedPrice,
         region: cart.region,
         includeTaxes: false,
         locale: "es-CL",
@@ -54,7 +63,7 @@ const useProductPrice = ({ id, variantId }: useProductPriceProps) => {
         maximumFractionDigits: 0,
       }),
       original_price: formatAmount({
-        amount: cheapestVariant.original_price,
+        amount: adjustedOriginalPrice,
         region: cart.region,
         includeTaxes: false,
         locale: "es-CL",
@@ -81,10 +90,18 @@ const useProductPrice = ({ id, variantId }: useProductPriceProps) => {
     if (!variant) {
       return null
     }
+    const adjustedVariantCalculatedPrice = adjustPriceForZeroDecimalCurrency(
+      variant.calculated_price,
+      cart?.region?.currency_code
+    )
+    const adjustedVariantOriginalPrice = adjustPriceForZeroDecimalCurrency(
+      variant.original_price,
+      cart?.region?.currency_code
+    )
 
     return {
       calculated_price: formatAmount({
-        amount: variant.calculated_price,
+        amount: adjustedVariantCalculatedPrice,
         region: cart.region,
         includeTaxes: false,
         locale: "es-CL",
@@ -92,7 +109,7 @@ const useProductPrice = ({ id, variantId }: useProductPriceProps) => {
         maximumFractionDigits: 0,
       }),
       original_price: formatAmount({
-        amount: variant.original_price,
+        amount: adjustedVariantOriginalPrice,
         region: cart.region,
         includeTaxes: false,
         locale: "es-CL",

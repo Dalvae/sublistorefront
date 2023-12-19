@@ -128,7 +128,10 @@ const Overview = ({ orders, customer }: OverviewProps) => {
                               <span>#{order.display_id}</span>
                               <span>
                                 {formatAmount({
-                                  amount: order.total,
+                                  amount: adjustPriceForZeroDecimalCurrency(
+                                    order.total,
+                                    order.region.currency_code
+                                  ),
                                   region: order.region,
                                   includeTaxes: false,
                                   locale: "es-CL",

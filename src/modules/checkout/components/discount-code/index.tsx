@@ -8,6 +8,7 @@ import Trash from "@modules/common/icons/trash"
 import { formatAmount, useCart, useUpdateCart } from "medusa-react"
 import { useForm } from "react-hook-form"
 import { useMutation } from "@tanstack/react-query"
+import { adjustPriceForZeroDecimalCurrency } from "@lib/util/prices"
 
 type DiscountFormValues = {
   discount_code: string
@@ -37,8 +38,12 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
       case "percentage":
         return `${discounts[0].rule.value}%`
       case "fixed":
+        const adjustedDiscountValue = adjustPriceForZeroDecimalCurrency(
+          discounts[0].rule.value,
+          region.currency_code
+        )
         return `- ${formatAmount({
-          amount: discounts[0].rule.value,
+          amount: adjustedDiscountValue,
           region: region,
           locale: "es-CL",
           minimumFractionDigits: 0,
@@ -142,7 +147,10 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
                 <Text className="font-semibold">
                   {formatAmount({
                     region: region,
-                    amount: gc.balance,
+                    amount: adjustPriceForZeroDecimalCurrency(
+                      gc.balance,
+                      region.currency_code
+                    ),
                     locale: "es-CL",
                     minimumFractionDigits: 0,
                     maximumFractionDigits: 0,

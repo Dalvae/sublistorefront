@@ -6,6 +6,7 @@ import { useQuery } from "@tanstack/react-query"
 import { formatAmount, useCart } from "medusa-react"
 import { ProductPreviewType } from "types/global"
 import { CalculatedVariant } from "types/medusa"
+import { adjustPriceForZeroDecimalCurrency } from "@lib/util/prices"
 
 type LayoutCollection = {
   handle: string
@@ -78,6 +79,15 @@ const fetchFeaturedProducts = async (
         return acc
       }, variants[0])
 
+      const adjustedCalculatedPrice = adjustPriceForZeroDecimalCurrency(
+        cheapestVariant.calculated_price,
+        region.currency_code
+      )
+      const adjustedOriginalPrice = adjustPriceForZeroDecimalCurrency(
+        cheapestVariant.original_price,
+        region.currency_code
+      )
+
       return {
         id: p.id!,
         title: p.title!,
@@ -86,7 +96,7 @@ const fetchFeaturedProducts = async (
         price: cheapestVariant
           ? {
               calculated_price: formatAmount({
-                amount: cheapestVariant.calculated_price,
+                amount: adjustedCalculatedPrice,
                 region: region,
                 includeTaxes: false,
                 locale: "es-CL",
@@ -94,7 +104,7 @@ const fetchFeaturedProducts = async (
                 maximumFractionDigits: 0,
               }),
               original_price: formatAmount({
-                amount: cheapestVariant.original_price,
+                amount: adjustedOriginalPrice,
                 region: region,
                 includeTaxes: false,
                 locale: "es-CL",

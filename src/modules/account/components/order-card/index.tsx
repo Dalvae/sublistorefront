@@ -4,6 +4,7 @@ import Thumbnail from "@modules/products/components/thumbnail"
 import { formatAmount } from "medusa-react"
 import Link from "next/link"
 import { useMemo } from "react"
+import { adjustPriceForZeroDecimalCurrency } from "@lib/util/prices"
 
 type OrderCardProps = {
   order: Omit<Order, "beforeInsert">
@@ -29,7 +30,10 @@ const OrderCard = ({ order }: OrderCardProps) => {
         </span>
         <span className="px-2">
           {formatAmount({
-            amount: order.total,
+            amount: adjustPriceForZeroDecimalCurrency(
+              order.total,
+              order.region.currency_code
+            ),
             region: order.region,
             includeTaxes: false,
             locale: "es-CL",
