@@ -2,6 +2,16 @@ import { MoneyAmount } from "@medusajs/medusa"
 import { formatAmount } from "medusa-react"
 import { Region, Variant } from "types/medusa"
 
+export const adjustPriceForZeroDecimalCurrency = (
+  amount: number,
+  currencyCode: string
+): number => {
+  if (currencyCode.toLowerCase() === "clp") {
+    return amount * 100
+  }
+  return amount
+}
+
 export const findCheapestRegionPrice = (
   variants: Variant[],
   regionId: string
@@ -23,7 +33,6 @@ export const findCheapestRegionPrice = (
     return undefined
   }
 
-  //find the price with the lowest amount in regionPrices
   const cheapestPrice = regionPrices.reduce((acc, p) => {
     if (acc.amount > p.amount) {
       return p
@@ -56,7 +65,6 @@ export const findCheapestCurrencyPrice = (
     return undefined
   }
 
-  //find the price with the lowest amount in currencyPrices
   const cheapestPrice = currencyPrices.reduce((acc, p) => {
     if (acc.amount > p.amount) {
       return p
@@ -78,8 +86,14 @@ export const findCheapestPrice = (variants: Variant[], region: Region) => {
   }
 
   if (cheapestPrice) {
+    // Adjust the price for zero-decimal currency before formatting
+    const adjustedAmount = adjustPriceForZeroDecimalCurrency(
+      cheapestPrice.amount,
+      currency_code
+    )
+
     return formatAmount({
-      amount: cheapestPrice.amount,
+      amount: adjustedAmount,
       region: region,
       locale: "es-CL",
       minimumFractionDigits: 0,
@@ -87,7 +101,7 @@ export const findCheapestPrice = (variants: Variant[], region: Region) => {
     })
   }
 
-  // if we can't find any price that matches the current region,
+  // If we can't find any price that matches the current region,
   // either by id or currency, then the product is not available in
   // the current region
   return "Not available in your region"
