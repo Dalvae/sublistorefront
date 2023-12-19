@@ -19,7 +19,7 @@ const CartDropdown = () => {
   const { state, open, close } = useCartDropdown()
   const adjustedSubtotal = adjustPriceForZeroDecimalCurrency(
     cart?.subtotal ?? 0,
-    cart?.region.currency_code ?? ""
+    cart?.region?.currency_code ?? ""
   )
 
   return (
