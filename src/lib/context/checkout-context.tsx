@@ -24,6 +24,7 @@ import React, { createContext, useContext, useEffect, useMemo } from "react"
 import { FormProvider, useForm, useFormContext } from "react-hook-form"
 import { useStore } from "./store-context"
 import Spinner from "@modules/common/icons/spinner"
+import { adjustPriceForZeroDecimalCurrency } from "@lib/util/prices" // Import correcto
 
 type AddressValues = {
   first_name: string
@@ -168,7 +169,10 @@ export const CheckoutProvider = ({ children }: CheckoutProviderProps) => {
         value: option.id,
         label: option.name,
         price: formatAmount({
-          amount: option.amount || 0,
+          amount: adjustPriceForZeroDecimalCurrency(
+            option.amount || 0,
+            cart.region.currency_code
+          ),
           region: cart.region,
           locale: "es-CL",
           minimumFractionDigits: 0,
