@@ -10,12 +10,17 @@ import Thumbnail from "@modules/products/components/thumbnail"
 import { formatAmount, useCart } from "medusa-react"
 import Link from "next/link"
 import { Fragment } from "react"
+import { adjustPriceForZeroDecimalCurrency } from "@lib/util/prices"
 
 const CartDropdown = () => {
   const { cart, totalItems } = useCart()
   const items = useEnrichedLineItems()
   const { deleteItem } = useStore()
   const { state, open, close } = useCartDropdown()
+  const adjustedSubtotal = adjustPriceForZeroDecimalCurrency(
+    cart?.subtotal ?? 0,
+    cart?.region.currency_code ?? ""
+  )
 
   return (
     <div className="h-full z-50" onMouseEnter={open} onMouseLeave={close}>
@@ -108,7 +113,7 @@ const CartDropdown = () => {
                     </span>
                     <span className="text-large-semi">
                       {formatAmount({
-                        amount: cart.subtotal || 0,
+                        amount: adjustedSubtotal,
                         region: cart.region,
                         includeTaxes: false,
                         locale: "es-CL",

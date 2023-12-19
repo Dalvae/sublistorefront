@@ -3,6 +3,7 @@ import { Container, Heading, Text } from "@medusajs/ui"
 import { paymentInfoMap } from "@modules/checkout/components/payment"
 import Divider from "@modules/common/components/divider"
 import { formatAmount } from "medusa-react"
+import { adjustPriceForZeroDecimalCurrency } from "@lib/util/prices"
 
 type PaymentDetailsProps = {
   order: Order
@@ -19,6 +20,10 @@ const currencyCodeSymbolMap: { [key: string]: string } = {
 
 const PaymentDetails = ({ order }: PaymentDetailsProps) => {
   const payment = order.payments[0]
+  const adjustedAmount = adjustPriceForZeroDecimalCurrency(
+    payment.amount,
+    order.region.currency_code
+  )
   return (
     <div>
       <Heading level="h2" className="flex flex-row text-3xl-regular my-6">
@@ -47,7 +52,7 @@ const PaymentDetails = ({ order }: PaymentDetailsProps) => {
                   {payment.provider_id === "stripe" && payment.data.card_last4
                     ? `**** **** **** ${payment.data.card_last4}`
                     : `${formatAmount({
-                        amount: payment.amount,
+                        amount: adjustedAmount,
                         region: order.region,
                         locale: "es-CL",
                         minimumFractionDigits: 0,

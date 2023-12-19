@@ -2,12 +2,17 @@ import { Order } from "@medusajs/medusa"
 import { Heading, Text } from "@medusajs/ui"
 import Divider from "@modules/common/components/divider"
 import { formatAmount } from "medusa-react"
+import { adjustPriceForZeroDecimalCurrency } from "@lib/util/prices"
 
 type ShippingDetailsProps = {
   order: Order
 }
 
 const ShippingDetails = ({ order }: ShippingDetailsProps) => {
+  const adjustedShippingPrice = adjustPriceForZeroDecimalCurrency(
+    order.shipping_methods[0].price,
+    order.region.currency_code
+  )
   return (
     <div>
       <Heading level="h2" className="flex flex-row text-3xl-regular my-6">
@@ -47,7 +52,7 @@ const ShippingDetails = ({ order }: ShippingDetailsProps) => {
           <Text className="txt-medium text-ui-fg-subtle">
             {order.shipping_methods[0].shipping_option.name} (
             {formatAmount({
-              amount: order.shipping_methods[0].price,
+              amount: adjustedShippingPrice, // Usar el precio ajustado
               region: order.region,
               locale: "es-CL",
               minimumFractionDigits: 0,
