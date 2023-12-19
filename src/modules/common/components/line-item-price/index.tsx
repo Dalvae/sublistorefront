@@ -3,6 +3,7 @@ import { LineItem, Region } from "@medusajs/medusa"
 import clsx from "clsx"
 import { formatAmount } from "medusa-react"
 import { CalculatedVariant } from "types/medusa"
+import { adjustPriceForZeroDecimalCurrency } from "@lib/util/prices"
 
 type LineItemPriceProps = {
   item: Omit<LineItem, "beforeInsert">
@@ -15,9 +16,15 @@ const LineItemPrice = ({
   region,
   style = "default",
 }: LineItemPriceProps) => {
-  const originalPrice =
-    (item.variant as CalculatedVariant).original_price * item.quantity
-  const hasReducedPrice = (item.total || 0) < originalPrice
+  const originalPrice = adjustPriceForZeroDecimalCurrency(
+    (item.variant as CalculatedVariant).original_price * item.quantity,
+    region.currency_code
+  )
+  const adjustedTotal = adjustPriceForZeroDecimalCurrency(
+    item.total || 0,
+    region.currency_code
+  )
+  const hasReducedPrice = adjustedTotal < originalPrice
 
   return (
     <div className="flex flex-col gap-x-2 text-ui-fg-subtle items-end">
@@ -52,7 +59,7 @@ const LineItemPrice = ({
           })}
         >
           {formatAmount({
-            amount: item.total || 0,
+            amount: adjustedTotal,
             region: region,
             includeTaxes: false,
             locale: "es-CL",

@@ -3,6 +3,7 @@ import { Tooltip } from "@medusajs/ui"
 import { InformationCircleSolid } from "@medusajs/icons"
 import { formatAmount } from "medusa-react"
 import React from "react"
+import { adjustPriceForZeroDecimalCurrency } from "@lib/util/prices"
 
 type CartTotalsProps = {
   data: Omit<Cart, "refundable_amount" | "refunded_total"> | Order
@@ -19,8 +20,12 @@ const CartTotals: React.FC<CartTotalsProps> = ({ data }) => {
   } = data
 
   const getAmount = (amount: number | null | undefined) => {
+    const adjustedAmount = adjustPriceForZeroDecimalCurrency(
+      amount || 0,
+      data.region.currency_code
+    )
     return formatAmount({
-      amount: amount || 0,
+      amount: adjustedAmount,
       region: data.region,
       includeTaxes: false,
       locale: "es-CL",
