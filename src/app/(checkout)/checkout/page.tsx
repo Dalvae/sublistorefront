@@ -1,6 +1,9 @@
+// Asegúrate de que la primera línea de tu archivo sea "use client"
+"use client"
+
 import CheckoutTemplate from "@modules/checkout/templates"
-import { Metadata } from "next"
 import { useRouter } from "next/router"
+import { Metadata } from "next"
 import { useEffect, useState } from "react"
 
 export const metadata: Metadata = {
@@ -12,7 +15,6 @@ export default function Checkout() {
   const [token, setToken] = useState("")
 
   useEffect(() => {
-    // Si el token está disponible en la URL, lo establecemos en el estado
     if (router.query.token_ws) {
       setToken(router.query.token_ws as string)
     }
