@@ -17,31 +17,31 @@ const WebpayButton = () => {
   useEffect(() => {
     // Función para cargar los datos de Transbank
     const loadTransbankData = async () => {
-      // Comprueba si el token_ws está presente en la URL
-      const tokenWs = router.query.token_ws as string | undefined
-      if (tokenWs) {
-        console.log("Token WS recibido:", tokenWs)
-        // Aquí puedes agregar la lógica para procesar el token_ws y confirmar la transacción
-        // Por ejemplo, actualizar el estado del carrito o redirigir a una página de confirmación
-      } else if (cart && cart.payment_session && cart.payment_session.data) {
-        // Carga los datos de Transbank si el token_ws no está presente
-        const transbankToken = cart.payment_session.data.transbankToken
-        const redirectUrl = cart.payment_session.data.redirectUrl
-        const buyOrder = cart.payment_session.data.buyOrder as string
+      if (router.isReady) {
+        const tokenWs = router.query.token_ws as string | undefined
+        if (tokenWs) {
+          console.log("Token WS recibido:", tokenWs)
+          // Aquí puedes agregar la lógica para procesar el token_ws y confirmar la transacción
+          // Por ejemplo, actualizar el estado del carrito o redirigir a una página de confirmación
+        } else if (cart && cart.payment_session && cart.payment_session.data) {
+          // Carga los datos de Transbank si el token_ws no está presente
+          const transbankToken = cart.payment_session.data.transbankToken
+          const redirectUrl = cart.payment_session.data.redirectUrl
+          const buyOrder = cart.payment_session.data.buyOrder as string
 
-        if (
-          typeof transbankToken === "string" &&
-          typeof redirectUrl === "string"
-        ) {
-          setTransbankData({
-            token: transbankToken,
-            url: redirectUrl,
-            buyOrder,
-          })
+          if (
+            typeof transbankToken === "string" &&
+            typeof redirectUrl === "string"
+          ) {
+            setTransbankData({
+              token: transbankToken,
+              url: redirectUrl,
+              buyOrder,
+            })
+          }
         }
       }
     }
-
     // Carga los datos al montar el componente
     loadTransbankData()
   }, [cart])
