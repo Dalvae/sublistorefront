@@ -7,7 +7,10 @@ import CheckoutForm from "./checkout-form"
 import CheckoutSummary from "./checkout-summary"
 import SubmitSpinner from "../components/submit-spinner"
 
-const CheckoutTemplate = () => {
+interface CheckoutTemplateProps {
+  token: string // Definición del tipo para 'token'
+}
+const CheckoutTemplate: React.FC<CheckoutTemplateProps> = ({ token }) => {
   return (
     <CheckoutProvider>
       <div className="bg-white relative small:min-h-screen">
