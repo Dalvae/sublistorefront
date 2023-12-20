@@ -44,7 +44,7 @@ const WebpayButton = () => {
     }
     // Carga los datos al montar el componente
     loadTransbankData()
-  }, [cart])
+  }, [cart, router.isReady, router.query])
 
   const handleSubmit = () => {
     if (transbankData) {
