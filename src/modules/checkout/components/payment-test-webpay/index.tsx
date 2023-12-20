@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { useCart } from "medusa-react"
+import { useRouter } from "next/router"
 
 // Define una interfaz para los datos de Transbank
 interface TransbankData {
@@ -11,18 +12,22 @@ interface TransbankData {
 const WebpayButton = () => {
   const { cart } = useCart()
   const [transbankData, setTransbankData] = useState<TransbankData | null>(null)
+  const router = useRouter() // Utiliza useRouter para acceder a la URL actual y sus parámetros
 
   useEffect(() => {
     // Función para cargar los datos de Transbank
     const loadTransbankData = async () => {
-      if (cart && cart.payment_session && cart.payment_session.data) {
+      // Comprueba si el token_ws está presente en la URL
+      const tokenWs = router.query.token_ws as string | undefined
+      if (tokenWs) {
+        console.log("Token WS recibido:", tokenWs)
+        // Aquí puedes agregar la lógica para procesar el token_ws y confirmar la transacción
+        // Por ejemplo, actualizar el estado del carrito o redirigir a una página de confirmación
+      } else if (cart && cart.payment_session && cart.payment_session.data) {
+        // Carga los datos de Transbank si el token_ws no está presente
         const transbankToken = cart.payment_session.data.transbankToken
         const redirectUrl = cart.payment_session.data.redirectUrl
         const buyOrder = cart.payment_session.data.buyOrder as string
-
-        console.log("Transbank Token:", transbankToken) // Depuración
-        console.log("Redirect URL:", redirectUrl) // Depuración
-        console.log("Buy Order:", buyOrder) // Depuración
 
         if (
           typeof transbankToken === "string" &&
