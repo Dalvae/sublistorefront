@@ -18,7 +18,6 @@ const WebpayButton = () => {
       const queryParams = new URLSearchParams(window.location.search)
       const tokenWs = queryParams.get("token_ws")
 
-      // Actualiza el estado con los datos de Transbank y el token_ws
       setTransbankData((prevData) => {
         const defaultData = {
           token: "",
@@ -36,6 +35,11 @@ const WebpayButton = () => {
       })
     }
   }, [])
+
+  // Nuevo useEffect para hacer console.log de transbankData
+  useEffect(() => {
+    console.log("Transbank Data:", transbankData)
+  }, [transbankData])
 
   const handleSubmit = () => {
     if (transbankData) {
@@ -56,7 +60,7 @@ const WebpayButton = () => {
 
   const handleTestClick = () => {
     if (transbankData) {
-      console.log("Buy Order:", transbankData.buyOrder) // Hace console.log del buyOrder
+      console.log("Buy Order:", transbankData.buyOrder)
     }
   }
 
@@ -66,7 +70,7 @@ const WebpayButton = () => {
         onClick={handleSubmit}
         style={{ backgroundColor: "#561456", color: "white" }}
         className="rounded-md bg-gradient-to-r from-purple-400 to-blue-500 hover:bg-gradient-to-br focus:outline-none focus:ring gap-x-1.5 px-3 py-1.5 !min-h-[0] h-10"
-        disabled={!transbankData} // Deshabilita el botón si los datos aún no están cargados
+        disabled={!transbankData}
       >
         Ir a pagar
       </button>
