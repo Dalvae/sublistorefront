@@ -6,9 +6,9 @@ import { useRouter } from "next/router"
 import { Metadata } from "next"
 import { useEffect, useState } from "react"
 
-export const metadata: Metadata = {
-  title: "Checkout",
-}
+// export const metadata: Metadata = {
+//   title: "Checkout",
+// }
 
 export default function Checkout() {
   const router = useRouter()
