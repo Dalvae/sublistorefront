@@ -18,6 +18,7 @@ import {
   useRegions,
   useSetPaymentSession,
   useUpdateCart,
+  useUpdatePaymentSession,
 } from "medusa-react"
 import { useRouter } from "next/navigation"
 import React, { createContext, useContext, useEffect, useMemo } from "react"
@@ -323,6 +324,27 @@ export const CheckoutProvider = ({ children }: CheckoutProviderProps) => {
   }
 
   const isCompleting = useToggleState()
+
+  const handleTransbankResponse = async () => {
+    const queryParams = new URLSearchParams(window.location.search)
+    const tokenWs = queryParams.get("token_ws")
+    const updatePaymentSession = useUpdatePaymentSession(cart?.id || "")
+
+    if (cart?.id && tokenWs && cart.payment_session) {
+      try {
+        await updatePaymentSession.mutateAsync({
+          provider_id: cart.payment_session.provider_id,
+          data: {
+            transbankTokenWs: tokenWs,
+          },
+        })
+        console.log("Sesión de pago actualizada con Transbank")
+      } catch (error) {
+        console.error("Error al manejar la respuesta de Transbank:", error)
+        // Aquí puedes manejar el error, por ejemplo, actualizar un estado de error en el contexto
+      }
+    }
+  }
 
   /**
    * Method to complete the checkout process. This is called when the user clicks the "Complete Checkout" button.
