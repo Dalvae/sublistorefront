@@ -1,49 +1,69 @@
 import React, { useState, useEffect } from "react"
-import { useCart } from "medusa-react"
+import { useCart, useUpdatePaymentSession } from "medusa-react"
 
-// Define una interfaz para los datos de Transbank
 interface TransbankData {
   token: string
   url: string
   buyOrder?: string
-  transbankTokenWs?: string // Agregada esta línea
+  transbankTokenWs?: string
 }
 
 const WebpayButton = () => {
   const { cart } = useCart()
   const [transbankData, setTransbankData] = useState<TransbankData | null>(null)
 
+  const updatePaymentSession = cart ? useUpdatePaymentSession(cart.id) : null
+
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== "undefined" && cart) {
       const queryParams = new URLSearchParams(window.location.search)
       const tokenWs = queryParams.get("token_ws")
 
-      if (tokenWs) {
-        console.log("Token WS recibido:", tokenWs)
-        setTransbankData((prevData) => ({
-          ...prevData,
-          token: prevData?.token || "",
-          url: prevData?.url || "",
-          buyOrder: prevData?.buyOrder,
-          transbankTokenWs: tokenWs,
-        }))
-      } else if (cart?.payment_session?.data) {
-        // Asumiendo que transbankToken, redirectUrl y buyOrder son de tipo desconocido,
-        // los tratamos como cadenas usando aserciones de tipo.
+      if (
+        tokenWs &&
+        cart.payment_session?.provider_id &&
+        updatePaymentSession
+      ) {
+        // Actualiza la sesión de pago con token_ws
+        updatePaymentSession.mutate(
+          {
+            provider_id: cart.payment_session.provider_id,
+            data: {
+              transbankTokenWs: tokenWs,
+            },
+          },
+          {
+            onSuccess: (updatedCart) => {
+              console.log("Sesión de pago actualizada:")
+            },
+            onError: (error) => {
+              console.error("Error al actualizar la sesión de pago:", error)
+            },
+          }
+        )
+      } else if (cart.payment_session?.data) {
+        // Extrae los datos de Transbank si el token_ws no está presente
         const transbankToken =
-          (cart.payment_session.data.transbankToken as string) || ""
+          typeof cart.payment_session.data.transbankToken === "string"
+            ? cart.payment_session.data.transbankToken
+            : ""
         const redirectUrl =
-          (cart.payment_session.data.redirectUrl as string) || ""
-        const buyOrder = (cart.payment_session.data.buyOrder as string) || ""
+          typeof cart.payment_session.data.redirectUrl === "string"
+            ? cart.payment_session.data.redirectUrl
+            : ""
+        const buyOrder =
+          typeof cart.payment_session.data.buyOrder === "string"
+            ? cart.payment_session.data.buyOrder
+            : ""
 
         setTransbankData({
-          token: transbankToken, // Ahora se trata como una cadena
-          url: redirectUrl, // Ahora se trata como una cadena
-          buyOrder: buyOrder, // Ahora se trata como una cadena
+          token: transbankToken,
+          url: redirectUrl,
+          buyOrder: buyOrder,
         })
       }
     }
-  }, [cart])
+  }, [cart, updatePaymentSession])
 
   useEffect(() => {
     console.log("Transbank Data:", cart?.payment_session?.data)
