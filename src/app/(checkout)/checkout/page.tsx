@@ -1,3 +1,4 @@
+"use client"
 import CheckoutTemplate from "@modules/checkout/templates"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
