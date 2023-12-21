@@ -28,12 +28,18 @@ const WebpayButton = () => {
           transbankTokenWs: tokenWs,
         }))
       } else if (cart?.payment_session?.data) {
-        const { transbankToken, redirectUrl, buyOrder } =
-          cart.payment_session.data
+        // Asumiendo que transbankToken, redirectUrl y buyOrder son de tipo desconocido,
+        // los tratamos como cadenas usando aserciones de tipo.
+        const transbankToken =
+          (cart.payment_session.data.transbankToken as string) || ""
+        const redirectUrl =
+          (cart.payment_session.data.redirectUrl as string) || ""
+        const buyOrder = (cart.payment_session.data.buyOrder as string) || ""
+
         setTransbankData({
-          token: transbankToken || "", // Asegúrate de que transbankToken es una cadena
-          url: redirectUrl || "", // Asegúrate de que redirectUrl es una cadena
-          buyOrder: buyOrder || "", // Asegúrate de que buyOrder es una cadena
+          token: transbankToken, // Ahora se trata como una cadena
+          url: redirectUrl, // Ahora se trata como una cadena
+          buyOrder: buyOrder, // Ahora se trata como una cadena
         })
       }
     }
