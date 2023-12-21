@@ -12,11 +12,13 @@ export default function Checkout() {
   const [token, setToken] = useState("")
 
   useEffect(() => {
-    // Asegúrate de que el router esté listo antes de acceder a sus propiedades
-    if (router.isReady && router.query.token_ws) {
-      setToken(router.query.token_ws as string)
+    if (router?.isReady) {
+      const tokenWs = router.query.token_ws
+      if (tokenWs) {
+        setToken(tokenWs as string)
+      }
     }
-  }, [router.isReady, router.query])
+  }, [router?.isReady, router?.query])
 
   return <CheckoutTemplate token={token} />
 }
