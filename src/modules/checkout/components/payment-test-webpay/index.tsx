@@ -5,7 +5,8 @@ import { useCart } from "medusa-react"
 interface TransbankData {
   token: string
   url: string
-  buyOrder?: string // Agrega la propiedad buyOrder
+  buyOrder?: string
+  transbankTokenWs?: string
 }
 
 const WebpayButton = () => {
@@ -13,38 +14,28 @@ const WebpayButton = () => {
   const [transbankData, setTransbankData] = useState<TransbankData | null>(null)
 
   useEffect(() => {
-    // Verificar si estamos en el lado del cliente
     if (typeof window !== "undefined") {
       const queryParams = new URLSearchParams(window.location.search)
       const tokenWs = queryParams.get("token_ws")
 
-      if (tokenWs) {
-        console.log("Token WS recibido:", tokenWs)
-        // Aquí puedes hacer algo con el token_ws
-      } else if (cart?.payment_session?.data) {
-        // Carga los datos de Transbank si el token_ws no está presente
-        const transbankData = cart.payment_session.data
-        const transbankToken =
-          typeof transbankData.transbankToken === "string"
-            ? transbankData.transbankToken
-            : ""
-        const redirectUrl =
-          typeof transbankData.redirectUrl === "string"
-            ? transbankData.redirectUrl
-            : ""
-        const buyOrder =
-          typeof transbankData.buyOrder === "string"
-            ? transbankData.buyOrder
-            : ""
+      // Actualiza el estado con los datos de Transbank y el token_ws
+      setTransbankData((prevData) => {
+        const defaultData = {
+          token: "",
+          url: "",
+          buyOrder: "",
+          transbankTokenWs: "",
+        }
 
-        setTransbankData({
-          token: transbankToken,
-          url: redirectUrl,
-          buyOrder,
-        })
-      }
+        const newData = prevData ? { ...prevData } : defaultData
+
+        return {
+          ...newData,
+          transbankTokenWs: tokenWs || newData.transbankTokenWs,
+        }
+      })
     }
-  }, [cart])
+  }, [])
 
   const handleSubmit = () => {
     if (transbankData) {
@@ -78,13 +69,6 @@ const WebpayButton = () => {
         disabled={!transbankData} // Deshabilita el botón si los datos aún no están cargados
       >
         Ir a pagar
-      </button>
-      <button
-        onClick={handleTestClick}
-        style={{ backgroundColor: "green", color: "white" }}
-        className="rounded-md ml-2"
-      >
-        Test
       </button>
     </div>
   )
