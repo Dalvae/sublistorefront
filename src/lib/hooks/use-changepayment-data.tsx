@@ -10,6 +10,7 @@ const useCheckoutActions = () => {
     const tokenWs = queryParams.get("token_ws")
 
     if (cart?.id && tokenWs && cart.payment_session) {
+      console.log("TokenWS encontrado")
       try {
         await updatePaymentSession.mutateAsync({
           provider_id: cart.payment_session.provider_id,
@@ -24,11 +25,8 @@ const useCheckoutActions = () => {
     }
   }, [cart, updatePaymentSession])
 
-  // Aquí puedes agregar más acciones relacionadas con el checkout si es necesario
-
   return {
     handleTransbankResponse,
-    // ... otras acciones
   }
 }
 
