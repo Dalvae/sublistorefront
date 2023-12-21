@@ -25,14 +25,6 @@ const LineItemUnitPrice = ({
     (item.total || 0) / item.quantity!,
     region.currency_code
   )
-
-  // Agregando console.log para debugging
-  console.log("Precio original:", originalPrice)
-  console.log("Cantidad:", item.quantity)
-  console.log("Total del artículo:", item.total)
-  console.log("Precio reducido:", reducedPrice)
-  console.log("Tiene precio reducido:", hasReducedPrice)
-
   return (
     <div className="flex flex-col text-ui-fg-muted justify-center h-full">
       {hasReducedPrice && (
