@@ -24,7 +24,8 @@ const WebpayButton = () => {
       const queryParams = new URLSearchParams(window.location.search)
       const tokenWs = queryParams.get("token_ws")
 
-      if (tokenWs) {
+      // Verificar si ya se ha procesado el tokenWs para evitar bucle infinito
+      if (tokenWs && !transbankData?.transbankTokenWs && updatePaymentSession) {
         // Actualiza la sesión de pago con token_ws
         updatePaymentSession.mutate(
           {
