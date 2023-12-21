@@ -1,6 +1,7 @@
 import { useCheckout } from "@lib/context/checkout-context"
 import React, { useState, useEffect } from "react"
 import { useCart } from "medusa-react"
+import useCheckoutActions from "@lib/hooks/use-changepayment-data"
 
 interface TransbankData {
   token: string
@@ -13,14 +14,17 @@ const WebpayButton = () => {
   const { onPaymentCompleted } = useCheckout()
   const [transbankData, setTransbankData] = useState<TransbankData | null>(null)
   const [paymentCompleted, setPaymentCompleted] = useState(false) // Estado para controlar la ejecución
+  const { handleTransbankResponse } = useCheckoutActions()
 
   useEffect(() => {
     // Verifica si el token de Transbank está presente y si la transacción ha sido confirmada
     if (cart?.payment_session?.data?.transbankTokenWs && !paymentCompleted) {
-      // Aquí debes asegurarte de que la transacción ha sido confirmada exitosamente
-      // Quizás necesites una lógica adicional aquí
-      onPaymentCompleted()
-      setPaymentCompleted(true)
+      handleTransbankResponse().then(() => {
+        // Asumiendo que handleTransbankResponse actualiza el estado del carrito
+        // y que onPaymentCompleted se debe llamar después de esa actualización
+        onPaymentCompleted()
+        setPaymentCompleted(true)
+      })
     } else if (cart?.payment_session?.data) {
       const transbankToken = cart.payment_session.data.transbankToken
       const redirectUrl = cart.payment_session.data.redirectUrl
