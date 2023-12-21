@@ -16,56 +16,55 @@ const WebpayButton = () => {
   const updatePaymentSession = useUpdatePaymentSession(cart?.id || "")
 
   useEffect(() => {
-    if (
-      !isPaymentSessionUpdated &&
-      typeof window !== "undefined" &&
-      cart?.id &&
-      cart.payment_session?.provider_id
-    ) {
-      const queryParams = new URLSearchParams(window.location.search)
-      const tokenWs = queryParams.get("token_ws")
+    const updateSession = async () => {
+      if (
+        !isPaymentSessionUpdated &&
+        typeof window !== "undefined" &&
+        cart?.id &&
+        cart.payment_session?.provider_id
+      ) {
+        const queryParams = new URLSearchParams(window.location.search)
+        const tokenWs = queryParams.get("token_ws")
 
-      if (tokenWs) {
-        updatePaymentSession.mutate(
-          {
-            provider_id: cart.payment_session.provider_id,
-            data: {
-              transbankTokenWs: tokenWs,
-            },
-          },
-          {
-            onSuccess: (updatedCart) => {
-              console.log("Sesión de pago actualizada:")
-              setIsPaymentSessionUpdated(true)
-            },
-            onError: (error) => {
-              console.error("Error al actualizar la sesión de pago:", error)
-            },
+        if (tokenWs) {
+          try {
+            await updatePaymentSession.mutateAsync({
+              provider_id: cart.payment_session.provider_id,
+              data: {
+                transbankTokenWs: tokenWs,
+              },
+            })
+            console.log("Sesión de pago actualizada:")
+            setIsPaymentSessionUpdated(true)
+          } catch (error) {
+            console.error("Error al actualizar la sesión de pago:", error)
           }
-        )
-      } else if (cart.payment_session?.data) {
-        // Extrae los datos de Transbank si el token_ws no está presente
-        const transbankToken =
-          typeof cart.payment_session.data.transbankToken === "string"
-            ? cart.payment_session.data.transbankToken
-            : ""
-        const redirectUrl =
-          typeof cart.payment_session.data.redirectUrl === "string"
-            ? cart.payment_session.data.redirectUrl
-            : ""
-        const buyOrder =
-          typeof cart.payment_session.data.buyOrder === "string"
-            ? cart.payment_session.data.buyOrder
-            : ""
+        } else if (cart.payment_session?.data) {
+          // Extrae los datos de Transbank si el token_ws no está presente
+          const transbankToken =
+            typeof cart.payment_session.data.transbankToken === "string"
+              ? cart.payment_session.data.transbankToken
+              : ""
+          const redirectUrl =
+            typeof cart.payment_session.data.redirectUrl === "string"
+              ? cart.payment_session.data.redirectUrl
+              : ""
+          const buyOrder =
+            typeof cart.payment_session.data.buyOrder === "string"
+              ? cart.payment_session.data.buyOrder
+              : ""
 
-        setTransbankData({
-          token: transbankToken,
-          url: redirectUrl,
-          buyOrder: buyOrder,
-        })
+          setTransbankData({
+            token: transbankToken,
+            url: redirectUrl,
+            buyOrder: buyOrder,
+          })
+        }
       }
     }
-  }, [cart, updatePaymentSession])
+
+    updateSession()
+  }, [cart, updatePaymentSession, isPaymentSessionUpdated])
 
   useEffect(() => {
     console.log("Transbank Data:", cart?.payment_session?.data)
