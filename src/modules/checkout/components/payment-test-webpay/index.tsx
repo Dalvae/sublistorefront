@@ -6,7 +6,7 @@ interface TransbankData {
   token: string
   url: string
   buyOrder?: string
-  transbankTokenWs?: string
+  transbankTokenWs?: string // Agregada esta línea
 }
 
 const WebpayButton = () => {
@@ -18,27 +18,29 @@ const WebpayButton = () => {
       const queryParams = new URLSearchParams(window.location.search)
       const tokenWs = queryParams.get("token_ws")
 
-      setTransbankData((prevData) => {
-        const defaultData = {
-          token: "",
-          url: "",
-          buyOrder: "",
-          transbankTokenWs: "",
-        }
-
-        const newData = prevData ? { ...prevData } : defaultData
-
-        return {
-          ...newData,
-          transbankTokenWs: tokenWs || newData.transbankTokenWs,
-        }
-      })
+      if (tokenWs) {
+        console.log("Token WS recibido:", tokenWs)
+        setTransbankData((prevData) => ({
+          ...prevData,
+          token: prevData?.token || "",
+          url: prevData?.url || "",
+          buyOrder: prevData?.buyOrder,
+          transbankTokenWs: tokenWs,
+        }))
+      } else if (cart?.payment_session?.data) {
+        const { transbankToken, redirectUrl, buyOrder } =
+          cart.payment_session.data
+        setTransbankData({
+          token: transbankToken || "", // Asegúrate de que transbankToken es una cadena
+          url: redirectUrl || "", // Asegúrate de que redirectUrl es una cadena
+          buyOrder: buyOrder || "", // Asegúrate de que buyOrder es una cadena
+        })
+      }
     }
-  }, [])
+  }, [cart])
 
-  // Nuevo useEffect para hacer console.log de transbankData
   useEffect(() => {
-    console.log("Transbank Data:", transbankData)
+    console.log("Transbank Data:", cart?.payment_session?.data)
   }, [transbankData])
 
   const handleSubmit = () => {
@@ -55,12 +57,6 @@ const WebpayButton = () => {
       form.appendChild(hiddenField)
       document.body.appendChild(form)
       form.submit()
-    }
-  }
-
-  const handleTestClick = () => {
-    if (transbankData) {
-      console.log("Buy Order:", transbankData.buyOrder)
     }
   }
 
