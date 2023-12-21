@@ -11,8 +11,11 @@ interface TransbankData {
 const WebpayButton = () => {
   const { cart } = useCart()
   const [transbankData, setTransbankData] = useState<TransbankData | null>(null)
-
-  const updatePaymentSession = cart ? useUpdatePaymentSession(cart.id) : null
+  const useConditionalUpdatePaymentSession = (cartId: string | undefined) => {
+    return cartId ? useUpdatePaymentSession(cartId) : null
+  }
+  // Llamada al hook useUpdatePaymentSession en el nivel superior del componente
+  const updatePaymentSession = useConditionalUpdatePaymentSession(cart?.id)
 
   useEffect(() => {
     if (typeof window !== "undefined" && cart) {
