@@ -17,8 +17,11 @@ const WebpayButton = () => {
   const { handleTransbankResponse } = useCheckoutActions()
 
   useEffect(() => {
-    // Verifica si el token de Transbank está presente y si la transacción ha sido confirmada
-    if (cart?.payment_session?.data?.transbankTokenWs && !paymentCompleted) {
+    // Verifica si el token   useEffect(() => {
+    const queryParams = new URLSearchParams(window.location.search)
+    const tokenWs = queryParams.get("token_ws")
+
+    if (tokenWs && !paymentCompleted) {
       handleTransbankResponse().then(() => {
         // Asumiendo que handleTransbankResponse actualiza el estado del carrito
         // y que onPaymentCompleted se debe llamar después de esa actualización
