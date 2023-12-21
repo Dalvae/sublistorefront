@@ -1,6 +1,6 @@
 "use client"
 import CheckoutTemplate from "@modules/checkout/templates"
-import { useRouter } from "next/router"
+// import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 // import { Metadata } from "next"
 // export const metadata: Metadata = {
@@ -8,17 +8,18 @@ import { useEffect, useState } from "react"
 // }
 
 export default function Checkout() {
-  const router = useRouter()
   const [token, setToken] = useState("")
 
   useEffect(() => {
-    if (router?.isReady) {
-      const tokenWs = router.query.token_ws
+    // Asegúrate de que este código se ejecute solo en el cliente
+    if (typeof window !== "undefined") {
+      const urlParams = new URLSearchParams(window.location.search)
+      const tokenWs = urlParams.get("token_ws")
       if (tokenWs) {
-        setToken(tokenWs as string)
+        setToken(tokenWs)
       }
     }
-  }, [router?.isReady, router?.query])
+  }, [])
 
   return <CheckoutTemplate token={token} />
 }
