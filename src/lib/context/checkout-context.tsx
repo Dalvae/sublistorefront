@@ -1,5 +1,5 @@
 "use client"
-
+import useCheckoutActions from "@lib/hooks/use-changepayment-data"
 import { medusaClient } from "@lib/config"
 import useToggleState, { StateType } from "@lib/hooks/use-toggle-state"
 import {
@@ -65,6 +65,7 @@ interface CheckoutContext {
   setShippingOption: (soId: string) => void
   setPaymentSession: (providerId: string) => void
   onPaymentCompleted: () => void
+  handleTransbankResponse: () => Promise<void> // aca hay que editar cual es el tipo de coso
 }
 
 const CheckoutContext = createContext<CheckoutContext | null>(null)
@@ -325,27 +326,7 @@ export const CheckoutProvider = ({ children }: CheckoutProviderProps) => {
 
   const isCompleting = useToggleState()
 
-  const handleTransbankResponse = async () => {
-    const queryParams = new URLSearchParams(window.location.search)
-    const tokenWs = queryParams.get("token_ws")
-    const updatePaymentSession = useUpdatePaymentSession(cart?.id || "")
-
-    if (cart?.id && tokenWs && cart.payment_session) {
-      try {
-        await updatePaymentSession.mutateAsync({
-          provider_id: cart.payment_session.provider_id,
-          data: {
-            transbankTokenWs: tokenWs,
-          },
-        })
-        console.log("Sesión de pago actualizada con Transbank")
-      } catch (error) {
-        console.error("Error al manejar la respuesta de Transbank:", error)
-        // Aquí puedes manejar el error, por ejemplo, actualizar un estado de error en el contexto
-      }
-    }
-  }
-
+  const { handleTransbankResponse } = useCheckoutActions()
   /**
    * Method to complete the checkout process. This is called when the user clicks the "Complete Checkout" button.
    */
@@ -381,6 +362,7 @@ export const CheckoutProvider = ({ children }: CheckoutProviderProps) => {
           setSavedAddress,
           setShippingOption,
           setPaymentSession,
+          handleTransbankResponse,
           onPaymentCompleted,
         }}
       >

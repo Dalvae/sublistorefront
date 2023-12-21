@@ -1,11 +1,14 @@
-import { useMutation } from "@tanstack/react-query"
 import { useCart, useUpdatePaymentSession } from "medusa-react"
+import { useCallback } from "react"
 
-export const useHandleTransbankResponse = () => {
+const useCheckoutActions = () => {
   const { cart } = useCart()
   const updatePaymentSession = useUpdatePaymentSession(cart?.id || "")
 
-  const handleResponse = async (tokenWs: string) => {
+  const handleTransbankResponse = useCallback(async () => {
+    const queryParams = new URLSearchParams(window.location.search)
+    const tokenWs = queryParams.get("token_ws")
+
     if (cart?.id && tokenWs && cart.payment_session) {
       try {
         await updatePaymentSession.mutateAsync({
@@ -14,14 +17,19 @@ export const useHandleTransbankResponse = () => {
             transbankTokenWs: tokenWs,
           },
         })
-        // Aquí podrías manejar la respuesta, como actualizar el estado del carrito
         console.log("Sesión de pago actualizada con Transbank")
       } catch (error) {
         console.error("Error al manejar la respuesta de Transbank:", error)
-        throw error // Propaga el error para su manejo externo
       }
     }
-  }
+  }, [cart, updatePaymentSession])
 
-  return handleResponse
+  // Aquí puedes agregar más acciones relacionadas con el checkout si es necesario
+
+  return {
+    handleTransbankResponse,
+    // ... otras acciones
+  }
 }
+
+export default useCheckoutActions
