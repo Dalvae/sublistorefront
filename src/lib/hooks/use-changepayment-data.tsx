@@ -9,7 +9,12 @@ const useCheckoutActions = () => {
     const queryParams = new URLSearchParams(window.location.search)
     const tokenWs = queryParams.get("token_ws")
 
-    if (cart?.id && tokenWs && cart.payment_session) {
+    if (
+      cart?.id &&
+      tokenWs &&
+      cart.payment_session &&
+      cart.payment_session.data.transbankTokenWs !== tokenWs
+    ) {
       console.log("TokenWS encontrado")
       try {
         await updatePaymentSession.mutateAsync({
