@@ -34,8 +34,9 @@ const WebpayButton = () => {
       const buyOrder = cart.payment_session.data.buyOrder
 
       console.log("Transbank Session Data:", cart.payment_session.data)
-
-      if (
+      if (!!cart.payment_session.data.transbankTokenWs) {
+        onPaymentCompleted()
+      } else if (
         typeof transbankToken === "string" &&
         typeof redirectUrl === "string" &&
         typeof buyOrder === "string"
