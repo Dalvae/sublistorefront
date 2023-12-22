@@ -13,7 +13,7 @@ const useCheckoutActions = () => {
       cart?.id &&
       tokenWs &&
       cart.payment_session &&
-      cart.payment_session.data.transbankTokenWs !== tokenWs
+      !cart.payment_session.data.transbankTokenWs
     ) {
       console.log("TokenWS encontrado")
       try {

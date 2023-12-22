@@ -1,7 +1,7 @@
-import { useCheckout } from "@lib/context/checkout-context"
 import React, { useState, useEffect } from "react"
 import { useCart } from "medusa-react"
 import useCheckoutActions from "@lib/hooks/use-changepayment-data"
+import { useCheckout } from "@lib/context/checkout-context"
 
 interface TransbankData {
   token: string
@@ -13,21 +13,21 @@ const WebpayButton = () => {
   const { cart } = useCart()
   const { onPaymentCompleted } = useCheckout()
   const [transbankData, setTransbankData] = useState<TransbankData | null>(null)
-  const [paymentCompleted, setPaymentCompleted] = useState(false) // Estado para controlar la ejecución
+  const [paymentCompleted, setPaymentCompleted] = useState(false)
   const { handleTransbankResponse } = useCheckoutActions()
 
   useEffect(() => {
-    // Verifica si el token   useEffect(() => {
     const queryParams = new URLSearchParams(window.location.search)
     const tokenWs = queryParams.get("token_ws")
 
+    async function handleResponse() {
+      await handleTransbankResponse()
+      onPaymentCompleted()
+      setPaymentCompleted(true)
+    }
+
     if (tokenWs && !paymentCompleted) {
-      handleTransbankResponse().then(() => {
-        // Asumiendo que handleTransbankResponse actualiza el estado del carrito
-        // y que onPaymentCompleted se debe llamar después de esa actualización
-        onPaymentCompleted()
-        setPaymentCompleted(true)
-      })
+      handleResponse()
     } else if (cart?.payment_session?.data) {
       const transbankToken = cart.payment_session.data.transbankToken
       const redirectUrl = cart.payment_session.data.redirectUrl
@@ -47,7 +47,7 @@ const WebpayButton = () => {
         })
       }
     }
-  }, [cart, onPaymentCompleted])
+  }, [cart, onPaymentCompleted, handleTransbankResponse])
 
   const handleSubmit = () => {
     if (transbankData) {
@@ -72,7 +72,12 @@ const WebpayButton = () => {
         onClick={handleSubmit}
         style={{ backgroundColor: "#561456", color: "white" }}
         className="rounded-md bg-gradient-to-r from-purple-400 to-blue-500 hover:bg-gradient-to-br focus:outline-none focus:ring gap-x-1.5 px-3 py-1.5 !min-h-[0] h-10"
-        disabled={!transbankData}
+        disabled={
+          !transbankData ||
+          paymentCompleted ||
+          (cart?.payment_session?.data &&
+            !!cart.payment_session.data.transbankTokenWs)
+        }
       >
         Ir a pagar
       </button>
