@@ -28,7 +28,7 @@ const useCheckoutActions = () => {
         console.error("Error al manejar la respuesta de Transbank:", error)
       }
     }
-  }, [updatePaymentSession])
+  }, [])
 
   return {
     handleTransbankResponse,
