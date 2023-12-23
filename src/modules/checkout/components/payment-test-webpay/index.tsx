@@ -20,21 +20,19 @@ const WebpayButton = () => {
     const queryParams = new URLSearchParams(window.location.search)
     const tokenWs = queryParams.get("token_ws")
 
-    async function handleResponse() {
+    const handleResponse = async () => {
       await handleTransbankResponse()
-      onPaymentCompleted()
       setPaymentCompleted(true)
     }
 
     if (tokenWs && !paymentCompleted) {
       handleResponse()
     } else if (cart?.payment_session?.data) {
-      const transbankToken = cart.payment_session.data.transbankToken
-      const redirectUrl = cart.payment_session.data.redirectUrl
-      const buyOrder = cart.payment_session.data.buyOrder
-
+      const { transbankToken, redirectUrl, buyOrder, transbankTokenWs } =
+        cart.payment_session.data
       console.log("Transbank Session Data:", cart.payment_session.data)
-      if (!!cart.payment_session.data.transbankTokenWs) {
+
+      if (transbankTokenWs) {
         onPaymentCompleted()
       } else if (
         typeof transbankToken === "string" &&
