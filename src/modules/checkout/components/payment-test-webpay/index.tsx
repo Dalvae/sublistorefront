@@ -80,7 +80,7 @@ const WebpayButton = () => {
         className="rounded-md bg-gradient-to-r from-purple-400 to-blue-500 hover:bg-gradient-to-br focus:outline-none focus:ring gap-x-1.5 px-3 py-1.5 !min-h-[0] h-10"
         disabled={
           !transbankData ||
-          paymentCompleted ||
+          paymentCompletado ||
           (cart?.payment_session?.data &&
             !!cart.payment_session.data.transbankTokenWs)
         }
