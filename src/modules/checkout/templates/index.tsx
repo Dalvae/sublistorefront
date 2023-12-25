@@ -6,6 +6,13 @@ import CheckoutLoader from "../components/checkout-loader"
 import CheckoutForm from "./checkout-form"
 import CheckoutSummary from "./checkout-summary"
 import SubmitSpinner from "../components/submit-spinner"
+import { Dancing_Script } from "@next/font/google"
+
+const dancing = Dancing_Script({
+  weight: "700",
+  subsets: ["latin"],
+  display: "swap",
+})
 
 interface CheckoutTemplateProps {
   token: string // Definición del tipo para 'token'
@@ -24,14 +31,14 @@ const CheckoutTemplate: React.FC<CheckoutTemplateProps> = ({ token }) => {
               <>
                 <ChevronDown className="rotate-90" size={16} />
                 <span className="mt-px hidden small:block txt-compact-plus text-ui-fg-subtle hover:text-ui-fg-base uppercase">
-                  Back to shopping cart
+                  Vuelve al carrito
                 </span>
                 <span className="mt-px block small:hidden">Back</span>
               </>
             </Link>
             <Link
               href="/"
-              className="txt-compact-xlarge-plus text-ui-fg-subtle hover:text-ui-fg-base uppercase"
+              className={`txt-compact-xlarge-plus text-ui-fg-subtle hover:text-ui-fg-base ${dancing.className}`}
             >
               Sublimahyca
             </Link>
