@@ -46,7 +46,7 @@ const WebpayButton = () => {
         })
       }
     }
-  }, [cart, handleTransbankResponse, paymentCompleted])
+  }, [cart, handleTransbankResponse, setPaymentCompleted])
 
   const handleSubmit = () => {
     if (transbankData) {
