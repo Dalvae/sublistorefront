@@ -13,7 +13,7 @@ const WebpayButton = () => {
   const { cart } = useCart()
   const { onPaymentCompleted } = useCheckout()
   const [transbankData, setTransbankData] = useState<TransbankData | null>(null)
-  const [paymentCompleted, setPaymentCompleted] = useState(false)
+  const [paymentCompletado, setPaymentCompletado] = useState(false)
   const { handleTransbankResponse } = useCheckoutActions()
 
   useEffect(() => {
@@ -22,10 +22,10 @@ const WebpayButton = () => {
 
     const handleResponse = async () => {
       await handleTransbankResponse()
-      setPaymentCompleted(true)
+      setPaymentCompletado(true)
     }
 
-    if (tokenWs && !paymentCompleted) {
+    if (tokenWs && !paymentCompletado) {
       handleResponse()
     } else if (cart?.payment_session?.data) {
       const { transbankToken, redirectUrl, buyOrder, transbankTokenWs } =
@@ -46,7 +46,13 @@ const WebpayButton = () => {
         })
       }
     }
-  }, [cart, handleTransbankResponse, setPaymentCompleted])
+  }, [cart, handleTransbankResponse, paymentCompletado])
+
+  useEffect(() => {
+    if (paymentCompletado) {
+      onPaymentCompleted()
+    }
+  }, [paymentCompletado, onPaymentCompleted])
 
   const handleSubmit = () => {
     if (transbankData) {
