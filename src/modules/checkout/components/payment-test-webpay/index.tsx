@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import { useCart } from "medusa-react"
 import useCheckoutActions from "@lib/hooks/use-changepayment-data"
 import { useCheckout } from "@lib/context/checkout-context"
+import useGenerateNewBuyOrder from "@lib/hooks/use-generateNewBuyOrder"
 
 interface TransbankData {
   token: string
@@ -15,7 +16,7 @@ const WebpayButton = () => {
   const [transbankData, setTransbankData] = useState<TransbankData | null>(null)
   const [paymentCompletado, setPaymentCompletado] = useState(false)
   const { handleTransbankResponse } = useCheckoutActions()
-
+  const { generateNewBuyOrderAndUpdateSession } = useGenerateNewBuyOrder()
   useEffect(() => {
     const queryParams = new URLSearchParams(window.location.search)
     const tokenWs = queryParams.get("token_ws")
@@ -49,22 +50,27 @@ const WebpayButton = () => {
     }
   }, [cart, handleTransbankResponse, paymentCompletado])
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    // Actualiza la sesión de pago con un nuevo buyOrder
+    await generateNewBuyOrderAndUpdateSession();
+
+    // Suponiendo que la actualización modifica los datos del carrito
     if (transbankData) {
-      const form = document.createElement("form")
-      form.method = "post"
-      form.action = transbankData.url
+      const { transbankToken, redirectUrl } = cart.payment_session.data;
 
-      const hiddenField = document.createElement("input")
-      hiddenField.type = "hidden"
-      hiddenField.name = "token_ws"
-      hiddenField.value = transbankData.token
+      const form = document.createElement("form");
+      form.method = "post";
+      form.action = transbankData.url;
 
-      form.appendChild(hiddenField)
-      document.body.appendChild(form)
-      form.submit()
+      const hiddenField = document.createElement("input");
+      hiddenField.type = "hidden";
+      hiddenField.name = "token_ws";
+      hiddenField.value = transbankData.token;
+
+      form.appendChild(hiddenField);
+      document.body.appendChild(form);
+      form.submit();
     }
-  }
 
   return (
     <div>
