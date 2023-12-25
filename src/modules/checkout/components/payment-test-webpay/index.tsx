@@ -52,26 +52,24 @@ const WebpayButton = () => {
 
   const handleSubmit = async () => {
     // Actualiza la sesión de pago con un nuevo buyOrder
-    await generateNewBuyOrderAndUpdateSession();
+    await generateNewBuyOrderAndUpdateSession()
 
     // Suponiendo que la actualización modifica los datos del carrito
     if (transbankData) {
-      const { transbankToken, redirectUrl } = cart.payment_session.data;
+      const form = document.createElement("form")
+      form.method = "post"
+      form.action = transbankData.url
 
-      const form = document.createElement("form");
-      form.method = "post";
-      form.action = transbankData.url;
+      const hiddenField = document.createElement("input")
+      hiddenField.type = "hidden"
+      hiddenField.name = "token_ws"
+      hiddenField.value = transbankData.token
 
-      const hiddenField = document.createElement("input");
-      hiddenField.type = "hidden";
-      hiddenField.name = "token_ws";
-      hiddenField.value = transbankData.token;
-
-      form.appendChild(hiddenField);
-      document.body.appendChild(form);
-      form.submit();
+      form.appendChild(hiddenField)
+      document.body.appendChild(form)
+      form.submit()
     }
-
+  }
   return (
     <div>
       <button
@@ -90,5 +88,4 @@ const WebpayButton = () => {
     </div>
   )
 }
-
 export default WebpayButton
