@@ -33,7 +33,7 @@ const WebpayButton = () => {
         cart.payment_session.data
       console.log("Transbank Session Data:", cart.payment_session.data)
 
-      if (transbankTokenWs) {
+      if (paymentCompletado) {
         onPaymentCompleted()
       } else if (
         typeof transbankToken === "string" &&
