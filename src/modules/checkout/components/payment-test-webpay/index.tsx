@@ -27,7 +27,8 @@ const WebpayButton = () => {
 
     if (tokenWs && !paymentCompletado) {
       handleResponse()
-    } else if (cart?.payment_session?.data) {
+    }
+    if (cart?.payment_session?.data) {
       const { transbankToken, redirectUrl, buyOrder, transbankTokenWs } =
         cart.payment_session.data
       console.log("Transbank Session Data:", cart.payment_session.data)
