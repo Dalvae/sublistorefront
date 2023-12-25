@@ -49,11 +49,11 @@ const WebpayButton = () => {
     }
   }, [cart, handleTransbankResponse, paymentCompletado])
 
-  useEffect(() => {
-    if (paymentCompletado) {
-      onPaymentCompleted()
-    }
-  }, [paymentCompletado, onPaymentCompleted])
+  // useEffect(() => {
+  //   if (paymentCompletado) {
+  //     onPaymentCompleted()
+  //   }
+  // }, [paymentCompletado, onPaymentCompleted])
 
   const handleSubmit = () => {
     if (transbankData) {
