@@ -37,10 +37,11 @@ const Review = () => {
           <div className="flex items-start gap-x-1 w-full mb-6">
             <div className="w-full">
               <Text className="txt-medium-plus text-ui-fg-base mb-1">
-                Al hacer clic en el botón de "Realizar pedido", confirmas que
-                has leído, comprendido y aceptado nuestros Términos de Uso,
-                Términos de Venta y Política de Devoluciones, y reconoces que
-                has leído la Política de Privacidad de Medusa Store.
+                Al hacer clic en el botón de &quot;Realizar pedido&quot;,
+                confirmas que has leído, comprendido y aceptado nuestros
+                Términos de Uso, Términos de Venta y Política de Devoluciones, y
+                reconoces que has leído la Política de Privacidad de Medusa
+                Store.
               </Text>
             </div>
           </div>
