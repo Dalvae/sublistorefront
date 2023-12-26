@@ -51,11 +51,7 @@ const WebpayButton = () => {
   }, [cart, handleTransbankResponse, paymentCompletado])
 
   const handleSubmit = async () => {
-    // Actualiza la sesión de pago con un nuevo buyOrder
-    await generateNewBuyOrderAndUpdateSession()
-
-    // Suponiendo que la actualización modifica los datos del carrito
-    if (transbankData) {
+    if (transbankData && transbankData.token && transbankData.url) {
       const form = document.createElement("form")
       form.method = "post"
       form.action = transbankData.url
