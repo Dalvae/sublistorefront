@@ -6,14 +6,33 @@ import { Text } from "@medusajs/ui"
 import Link from "next/link"
 import MedusaCTA from "../medusa-cta"
 import Logo from "@modules/common/icons/logo"
-import CountrySelect from "@modules/checkout/components/country-select"
+import CountrySelect2 from "@modules/layout/components/country-select2"
 import { Dancing_Script } from "@next/font/google"
+import ReactCountryFlag from "react-country-flag"
+import { useMobileMenu } from "@lib/context/mobile-menu-context"
+import { useStore } from "@lib/context/store-context"
+import useCountryOptions from "@lib/hooks/use-country-options"
 
 const dancing = Dancing_Script({
   weight: "700",
   subsets: ["latin"],
   display: "swap",
 })
+
+const CountryMenu = () => {
+  const {
+    close,
+    screen: [_, setScreen],
+  } = useMobileMenu()
+
+  const { setRegion } = useStore()
+  const countryOptions = useCountryOptions()
+
+  const handleSelectCountry = (regionId: string, countryCode: string) => {
+    setRegion(regionId, countryCode)
+    close()
+  }
+}
 
 const FooterNav = () => {
   const { collections } = useCollections()
@@ -129,7 +148,7 @@ const FooterNav = () => {
           © Copyright 2023 Sublimahyca
         </span>
         <div className="min-w-[316px] flex xsmall:justify-end">
-          <CountrySelect />
+          <CountrySelect2 />
         </div>
       </div>
       <MedusaCTA />
