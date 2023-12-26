@@ -29,7 +29,7 @@ const Review = () => {
             }
           )}
         >
-          Review
+          Resumen
         </Heading>
       </div>
       {!editingOtherSteps && previousStepsCompleted && (
