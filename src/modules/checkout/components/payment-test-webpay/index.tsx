@@ -36,7 +36,8 @@ const WebpayButton = () => {
 
       if (paymentCompletado || !!transbankTokenWs) {
         onPaymentCompleted()
-      } else if (
+      }
+      if (
         typeof transbankToken === "string" &&
         typeof redirectUrl === "string" &&
         typeof buyOrder === "string"
