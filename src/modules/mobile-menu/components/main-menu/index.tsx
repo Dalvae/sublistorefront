@@ -61,7 +61,7 @@ const MainMenu = () => {
           >
             <MagnifyingGlassMini />
             <span placeholder="Search products" className="text-base-regular">
-              Search products
+              Buscar productos
             </span>
           </button>
         )}
@@ -75,7 +75,7 @@ const MainMenu = () => {
                   onClick={close}
                 >
                   <span className="sr-only">Go to Store</span>
-                  <span>Store</span>
+                  <span>Tienda</span>
                   <ChevronDown className="-rotate-90" />
                 </button>
               </Link>
@@ -93,7 +93,7 @@ const MainMenu = () => {
                         onClick={close}
                       >
                         <span className="sr-only">
-                          Go to {collection.title} collection
+                          Ir a {collection.title} colleción
                         </span>
                         <span>{collection.title}</span>
                         <ChevronDown className="-rotate-90" />
@@ -116,21 +116,23 @@ const MainMenu = () => {
                     className="flex items-center justify-between border-b border-gray-200 py-2 w-full"
                     onClick={close}
                   >
-                    <span className="sr-only">Go to sign in page</span>
-                    <span className="normal-case">Sign in</span>
+                    <span className="sr-only">Ir a Iniciar sesión</span>
+                    <span className="normal-case">Iniciar sesión</span>
                     <ChevronDown className="-rotate-90" />
                   </button>
                 </Link>
               </div>
             ) : (
               <div className="flex flex-col gap-y-4">
-                <span className="text-gray-700 uppercase">Signed in as</span>
+                <span className="text-gray-700 uppercase">
+                  Sesión iniciada como
+                </span>
                 <Link href={`/account`} passHref>
                   <button
                     className="flex items-center justify-between border-b border-gray-200 py-2 w-full"
                     onClick={close}
                   >
-                    <span className="sr-only">Go to account page</span>
+                    <span className="sr-only">Ir a tu cuenta</span>
                     <span className="normal-case">{customer.email}</span>
                     <ChevronDown className="-rotate-90" />
                   </button>
@@ -138,18 +140,18 @@ const MainMenu = () => {
               </div>
             )}
             <div className="flex flex-col gap-y-4">
-              <span className="text-gray-700 uppercase">Delivery</span>
+              <span className="text-gray-700 uppercase">Entregas</span>
               <button
                 className="flex items-center justify-between border-b border-gray-200 py-2"
                 onClick={setScreenCountry}
               >
                 <span className="sr-only">
-                  Click to select shipping country
+                  Haz clic para seleccionar el país de envío
                 </span>
                 <div className="flex items-center gap-x-2">
                   <ReactCountryFlag countryCode={countryCode || "us"} svg />
                   <span className="normal-case">
-                    Shipping to{" "}
+                    Envío a{" "}
                     {countries?.find((c) => c.country === countryCode)?.label}
                   </span>
                 </div>

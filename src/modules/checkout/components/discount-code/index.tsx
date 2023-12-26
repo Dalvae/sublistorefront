@@ -141,7 +141,7 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
                 key={gc.id}
               >
                 <Text className="flex gap-x-1 items-baseline">
-                  <span>Code: </span>
+                  <span>Codigo </span>
                   <span className="truncate">{gc.code}</span>
                 </Text>
                 <Text className="font-semibold">
@@ -186,7 +186,7 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
                 >
                   <Trash size={14} />
                   <span className="sr-only">
-                    Remove discount code from order
+                    Remover codigo de descuento de la orden
                   </span>
                 </button>
               </div>
@@ -195,7 +195,7 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
         ) : (
           <form onSubmit={handleSubmit(onApply)} className="w-full">
             <Label className="flex gap-x-1 mb-2">
-              Gift card or discount code?
+              Gift card o codigo de descuento?
               <Tooltip content="You can add multiple gift cards, but only one discount code.">
                 <InformationCircleSolid color="var(--fg-muted)" />
               </Tooltip>
@@ -215,7 +215,7 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
                 className="!min-h-[0] h-10"
                 isLoading={isLoading}
               >
-                Apply
+                Aplicar
               </Button>
             </div>
           </form>

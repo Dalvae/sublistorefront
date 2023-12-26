@@ -32,7 +32,7 @@ const ShippingAddress = ({
           <>
             <div className="grid grid-cols-2 gap-4">
               <Input
-                label="First name"
+                label="Nombre"
                 {...register("shipping_address.first_name", {
                   required: "First name is required",
                 })}
@@ -42,7 +42,7 @@ const ShippingAddress = ({
                 required
               />
               <Input
-                label="Last name"
+                label="Apellido"
                 {...register("shipping_address.last_name", {
                   required: "Last name is required",
                 })}
@@ -52,7 +52,7 @@ const ShippingAddress = ({
                 required
               />
               <Input
-                label="Address"
+                label="Dirección"
                 {...register("shipping_address.address_1", {
                   required: "Address is required",
                 })}
@@ -62,14 +62,14 @@ const ShippingAddress = ({
                 required
               />
               <Input
-                label="Company"
+                label="Compañia"
                 {...register("shipping_address.company")}
                 autoComplete="organization"
                 errors={errors}
                 touched={touchedFields}
               />
               <Input
-                label="Postal code"
+                label="Codigo Postal"
                 {...register("shipping_address.postal_code", {
                   required: "Postal code is required",
                 })}
@@ -79,7 +79,7 @@ const ShippingAddress = ({
                 required
               />
               <Input
-                label="City"
+                label="Ciudad"
                 {...register("shipping_address.city", {
                   required: "City is required",
                 })}
@@ -92,13 +92,13 @@ const ShippingAddress = ({
                 {...register("shipping_address.country_code", {
                   required: "Country is required",
                 })}
-                autoComplete="country"
+                autoComplete="Pais"
                 errors={errors}
                 touched={touchedFields}
                 required
               />
               <Input
-                label="State / Province"
+                label="Región"
                 {...register("shipping_address.province")}
                 autoComplete="address-level1"
                 errors={errors}
@@ -107,7 +107,7 @@ const ShippingAddress = ({
             </div>
             <div className="my-8">
               <Checkbox
-                label="Same as billing address"
+                label="Usar dirección de facturación"
                 checked={checked}
                 onChange={onChange}
               />
@@ -125,7 +125,7 @@ const ShippingAddress = ({
                 required
               />
               <Input
-                label="Phone"
+                label="Telefono"
                 {...register("shipping_address.phone")}
                 autoComplete="tel"
                 errors={errors}
