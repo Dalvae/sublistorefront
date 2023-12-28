@@ -4,6 +4,7 @@ import { Popover, Transition } from "@headlessui/react"
 import { XMark, ArrowRightMini } from "@medusajs/icons"
 import { Text, clx, useToggleState } from "@medusajs/ui"
 import CountrySelect from "../country-select"
+import Logo from "@modules/common/icons/logo"
 
 const SideMenuItems = {
   Home: "/",
@@ -31,6 +32,7 @@ const SideMenu = ({ searchModalOpen }: { searchModalOpen: () => void }) => {
                 <Popover.Button className="relative h-full flex items-center transition-all ease-out duration-200 focus:outline-none hover:text-ui-fg-base">
                   Menu
                 </Popover.Button>
+                <Logo />
               </div>
 
               <Transition
