@@ -1,11 +1,9 @@
-// Logo.tsx
 import React from "react"
-import { IconProps } from "types/icon"
 
-const Logo: React.FC = () => (
+const Logo: React.FC<{ className?: string }> = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    className="icon icon-tabler icon-tabler-gift"
+    className={`icon icon-tabler icon-tabler-gift ${className || ""}`}
     width="24"
     height="24"
     viewBox="0 0 24 24"
