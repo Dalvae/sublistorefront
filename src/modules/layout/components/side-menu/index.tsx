@@ -31,8 +31,8 @@ const SideMenu = ({ searchModalOpen }: { searchModalOpen: () => void }) => {
               <div className="relative flex h-full">
                 <Popover.Button className="relative h-full flex items-center transition-all ease-out duration-200 focus:outline-none hover:text-ui-fg-base">
                   Menu
+                  <Logo />
                 </Popover.Button>
-                <Logo className="relative h-full flex items-center transition-all ease-out duration-200 focus:outline-none hover:text-ui-fg-base" />
               </div>
 
               <Transition
