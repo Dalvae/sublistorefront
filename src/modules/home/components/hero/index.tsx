@@ -24,7 +24,7 @@ const Hero = () => {
         </div>
       </div>
       <Image
-        src="/hero.webp"
+        src="/hero.png"
         loading="eager"
         priority={true}
         quality={90}
