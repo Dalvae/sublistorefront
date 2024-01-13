@@ -29,7 +29,7 @@ const Hero = () => {
         priority={true}
         quality={100}
         alt=""
-        className="absolute inset-0 object-cover object-center w-full h-full"
+        className="absolute inset-0 object-cover object-bottom w-full h-full lg:mx-5"
         draggable="false"
         fill
         sizes="100vw"
