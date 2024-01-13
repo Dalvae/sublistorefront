@@ -25,14 +25,12 @@ const Hero = () => {
       </div>
       <Image
         src="/hero.png"
-        loading="eager"
-        priority={true}
-        quality={100}
         alt=""
-        className="absolute inset-0 object-cover object-bottom w-full h-full"
-        draggable="false"
-        fill
-        sizes="100vw"
+        layout="fill"
+        objectFit="cover"
+        objectPosition="center"
+        priority={true}
+        className="absolute inset-0 w-full h-full"
       />
     </div>
   )
