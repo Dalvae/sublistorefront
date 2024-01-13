@@ -5,7 +5,7 @@ import InteractiveLink from "@modules/common/components/interactive-link"
 
 const Hero = () => {
   return (
-    <div className="h-[90vh] w-full relative">
+    <div className="h-[90vh] w-full relative lg:mx-5">
       <div className="text-white absolute bottom-0 left-0 z-10 flex flex-col justify-center items-center text-center small:text-left small:justify-end small:items-start small:p-32">
         <div className="bg-opacity-70 shadow-2xl shadow-black bg-[#af4670a0] bg-gradient-blue bg-blend-soft-light rounded-md">
           <h1 className="text-2xl-semi  m-4  ">
@@ -29,7 +29,7 @@ const Hero = () => {
         priority={true}
         quality={100}
         alt=""
-        className="absolute inset-0 object-cover object-bottom w-full h-full lg:mx-5"
+        className="absolute inset-0 object-cover object-bottom w-full h-full"
         draggable="false"
         fill
         sizes="100vw"
