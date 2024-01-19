@@ -12,7 +12,7 @@ const Hero = () => {
             Un toque personal para momentos inolvidables
           </h1>
           <div className="flex justify-center items-center">
-            <p className="text-base-regular  bg-opacity-70 max-w-lg drop-shadow-lg shadow-black ">
+            <p className="text-base-regular mx-4  bg-opacity-70 max-w-lg drop-shadow-lg shadow-black ">
               En Sublimahyca, creemos que cada regalo debe contar una historia.
               Descubre nuestra gama única de regalos personalizados, diseñados
               para celebrar y conmemorar las ocasiones más especiales de la
@@ -20,7 +20,7 @@ const Hero = () => {
               seres queridos merecen algo tan único como ellos..
             </p>
           </div>
-          <UnderlineLink href="/store" classNames="pl-2 ml-2">
+          <UnderlineLink href="/store" classNames=" ml-6">
             Explorar Productos
           </UnderlineLink>
         </div>
