@@ -5,8 +5,8 @@ import InteractiveLink from "@modules/common/components/interactive-link"
 
 const Hero = () => {
   return (
-    <div className="h-[90vh] w-full  relative ">
-      <div className="text-white absolute bottom-0 left-0 z-10 flex flex-col justify-center items-center text-center small:text-left small:justify-end small:items-start small:mb-52 small:pl-32">
+    <div className="h-[90vh] w-full  relative">
+      <div className="text-white absolute bottom-[-10vh] left-0 z-10 flex flex-col justify-center items-center text-center small:text-left small:justify-end small:items-start small:mb-52 small:pl-32">
         <div className="bg-opacity-70 shadow-2xl shadow-black bg-[#af4670e9] bg-gradient-blue bg-blend-soft-light rounded-md ">
           <h1 className="text-2xl-semi  m-4  ">
             Un toque personal para momentos inolvidables
