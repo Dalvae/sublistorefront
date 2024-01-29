@@ -113,30 +113,18 @@ const FooterNav = () => {
             <span className="text-base-semi">Ecommerce</span>
             <ul className="grid grid-cols-1 gap-y-2">
               <li>
-                <a
-                  href="https://github.com/medusajs"
-                  target="_blank"
-                  rel="noreferrer"
-                >
+                <a href="/privacidad" target="_blank" rel="noreferrer">
                   Política de Privacidad
                 </a>
               </li>
               <li>
-                <a
-                  href="https://docs.medusajs.com"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Condiciones del Servicio
+                <a href="/devolucion" target="_blank" rel="noreferrer">
+                  Política de devolución
                 </a>
               </li>
               <li>
-                <a
-                  href="https://github.com/Dalvae/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Shippment
+                <a href="/about" target="_blank" rel="noreferrer">
+                  ¿Quienes somos?
                 </a>
               </li>
             </ul>
