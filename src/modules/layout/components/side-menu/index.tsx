@@ -10,6 +10,7 @@ const SideMenuItems = {
   Home: "/",
   Tienda: "/store",
   Buscar: "",
+  "¿Quiénes somos?": "/about",
   Cuenta: "/account",
   Carrito: "/cart",
 }

@@ -80,6 +80,18 @@ const MainMenu = () => {
                 </button>
               </Link>
             </li>
+            <li className="bg-gray-50 p-4 rounded-rounded">
+              <Link href="/about">
+                <button
+                  className="flex items-center justify-between w-full"
+                  onClick={close}
+                >
+                  <span className="sr-only">Go to About Us</span>
+                  <span>¿Quiénes somos?</span>
+                  <ChevronDown className="-rotate-90" />
+                </button>
+              </Link>
+            </li>
             {collections ? (
               <>
                 {collections.map((collection) => (
