@@ -3,7 +3,7 @@ import Image from "next/image"
 
 export default function Privacidad() {
   return (
-    <div className="h-[90vh] flex flex-wrap lg:flex-nowrap">
+    <div className="min-h-[90vh] flex flex-wrap lg:flex-nowrap">
       <div className="relative w-full md:w-1/2 h-64 md:h-auto">
         <Image
           src="/heros.jpeg"
