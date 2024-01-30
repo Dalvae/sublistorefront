@@ -19,7 +19,7 @@ export default function About() {
             ¿Quiénes Somos?
           </h1>
         </div>
-        <div className="flex flex-col justify-center h-full lg:pb-32">
+        <div className="flex-1 flex flex-col justify-center h-full lg:pb-32">
           <p className="text-md text-gray-700 self-center text-justify">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates
             sapiente recusandae qui vitae atque labore impedit, eius possimus
