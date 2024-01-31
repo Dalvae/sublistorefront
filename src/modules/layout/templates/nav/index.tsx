@@ -57,7 +57,10 @@ const Nav = () => {
                   open={searchModalOpen}
                 />
               )}
-              <Link className="text-white hover:text-black" href="/account">
+              <Link
+                className={`text-xl text-white hover:text-black ${dancing.className}`}
+                href="/account"
+              >
                 Cuenta
               </Link>
             </div>

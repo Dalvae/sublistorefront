@@ -5,6 +5,13 @@ import { XMark, ArrowRightMini } from "@medusajs/icons"
 import { Text, clx, useToggleState } from "@medusajs/ui"
 import CountrySelect from "../country-select"
 import Logo from "@modules/common/icons/logo"
+import { Dancing_Script } from "@next/font/google"
+
+const dancing = Dancing_Script({
+  weight: "700",
+  subsets: ["latin"],
+  display: "swap",
+})
 
 const SideMenuItems = {
   Home: "/",
@@ -32,7 +39,11 @@ const SideMenu = ({ searchModalOpen }: { searchModalOpen: () => void }) => {
               <div className="relative flex h-full">
                 <Popover.Button className="relative h-full flex items-center transition-all ease-out duration-200 focus:outline-none hover:text-ui-fg-base">
                   <Logo />
-                  Menu
+                  <div
+                    className={`text-xl text-white hover:text-black ${dancing.className}`}
+                  >
+                    Menu
+                  </div>
                 </Popover.Button>
               </div>
 

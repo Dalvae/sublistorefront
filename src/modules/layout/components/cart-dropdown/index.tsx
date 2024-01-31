@@ -11,6 +11,13 @@ import { formatAmount, useCart } from "medusa-react"
 import Link from "next/link"
 import { Fragment } from "react"
 import { adjustPriceForZeroDecimalCurrency } from "@lib/util/prices"
+import { Dancing_Script } from "@next/font/google"
+
+const dancing = Dancing_Script({
+  weight: "700",
+  subsets: ["latin"],
+  display: "swap",
+})
 
 const CartDropdown = () => {
   const { cart, totalItems } = useCart()
@@ -27,7 +34,7 @@ const CartDropdown = () => {
       <Popover className="relative h-full">
         <Popover.Button className="h-full">
           <Link
-            className="hover:text-ui-fg-base"
+            className={`text-xl text-white hover:text-ui-fg-base ${dancing.className}`}
             href="/cart"
           >{`Carrito (${totalItems})`}</Link>
         </Popover.Button>

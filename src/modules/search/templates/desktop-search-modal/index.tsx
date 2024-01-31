@@ -6,6 +6,13 @@ import DesktopHit from "@modules/search/components/desktop-hit"
 import DesktopHits from "@modules/search/components/desktop-hits"
 import SearchBox from "@modules/search/components/search-box"
 import { InstantSearch } from "react-instantsearch-hooks-web"
+import { Dancing_Script } from "@next/font/google"
+
+const dancing = Dancing_Script({
+  weight: "700",
+  subsets: ["latin"],
+  display: "swap",
+})
 
 type DesktopSearchModalProps = {
   state: boolean
@@ -20,8 +27,11 @@ const DesktopSearchModal = ({
 }: DesktopSearchModalProps) => {
   return (
     <>
-      <button onClick={open} className="flex items-center gap-x-2 h-full">
-        Search
+      <button
+        onClick={open}
+        className={`flex items-center gap-x-2 h-full text-xl text-white hover:text-black ${dancing.className}`}
+      >
+        Buscar
       </button>
 
       <Modal isOpen={state} close={close} size="large" search>
