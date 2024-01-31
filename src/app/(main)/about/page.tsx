@@ -27,7 +27,7 @@ export default function About() {
             Se me hizo fácil inclinarme por este nombre, pues incluye mis
             iniciales y las iniciales de Casablanca, comuna de la V región con
             el valle más hermoso del mundo y que nos acogió hace algunos años.
-            <p className=" text-md text-gray-700 self-center text-justify mt-1">
+            <p className=" text-md text-gray-700 self-center text-justify mt-3">
               {" "}
               La &quot;magia&quot; que se puede inferir de sus letras es lo que
               me inspiró, pues mi objetivo es añadir un toque mágico a cada
@@ -39,7 +39,7 @@ export default function About() {
               Nos esforzamos por ofrecer no solo productos personalizados, sino
               experiencias que te hagan sonreír cada vez que los utilizas.
             </p>
-            <p className=" text-md text-gray-700 self-center text-justify mt-1">
+            <p className=" text-md text-gray-700 self-center text-justify mt-3">
               {" "}
               En SUBLIMAHYCA, tu creatividad es nuestra guía para que
               &quot;magia&quot; no sea solo una palabra si no también un

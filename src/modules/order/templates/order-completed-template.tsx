@@ -36,12 +36,12 @@ const OrderCompletedTemplate: React.FC<OrderCompletedTemplateProps> = ({
             level="h1"
             className="flex flex-col gap-y-2 text-ui-fg-base text-3xl"
           >
-            <span>Thank you!</span>
-            <span>Your order was placed successfully.</span>
+            <span>Gracias!</span>
+            <span>Tú pedido se realizó con exito</span>
           </Heading>
           <OrderDetails order={order} />
           <Heading level="h2" className="flex flex-row text-3xl-regular">
-            Summary
+            Sumario
           </Heading>
           <Items
             items={order.items}

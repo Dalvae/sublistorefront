@@ -109,8 +109,8 @@ const SideMenu = ({ searchModalOpen }: { searchModalOpen: () => void }) => {
                         />
                       </div>
                       <Text className="flex justify-between txt-compact-small">
-                        © {new Date().getFullYear()} Sublimahyca Store. All
-                        rights reserved.
+                        © {new Date().getFullYear()} Sublimahyca Store. Todos
+                        los derechos reservados
                       </Text>
                     </div>
                   </div>
