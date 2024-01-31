@@ -21,29 +21,26 @@ export default function About() {
         </div>
         <div className="flex-1 flex flex-col justify-center h-full lg:pb-32">
           <p className="text-md text-gray-700 self-center text-justify">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates
-            sapiente recusandae qui vitae atque labore impedit, eius possimus
-            quia commodi inventore fugit cum ullam ipsum esse ipsam minima iusto
-            excepturi laudantium omnis dignissimos! Optio est nam quas quis,
-            dolor nisi doloribus, nobis ab placeat omnis facere reprehenderit
-            dicta minus dignissimos ipsam ad saepe quod perferendis magni
-            praesentium mollitia deleniti! Omnis, dignissimos, obcaecati quam
-            asperiores dolorem distinctio tempora explicabo totam possimus quis
-            blanditiis vitae voluptatibus corporis iste ducimus. Dicta in
-            architecto a, incidunt, tenetur ullam cumque ratione beatae
-            similique laudantium nam veniam perferendis error. Labore optio
-            numquam, nobis, iure totam itaque veritatis possimus, sed
-            necessitatibus ipsa quo culpa. Corporis quaerat voluptatum in
-            perspiciatis sunt nesciunt voluptate quia tempora atque? Assumenda,
-            quas. Officiis magni dolores, minima consectetur, hic repellat
-            dolorem eaque nihil accusamus cumque perspiciatis aut facilis nulla
-            tempore nobis praesentium ea ipsam asperiores necessitatibus, odio
-            architecto nemo tenetur. Quod, minima dolore obcaecati hic inventore
-            veniam sint dolores eum quisquam eius qui facilis at enim fuga alias
-            officiis dicta quibusdam perferendis repudiandae, labore atque
-            aspernatur vero modi! Quibusdam saepe vitae in quam, iusto accusamus
-            aperiam unde magni voluptatibus totam dolorem iure eveniet nam vero
-            quaerat. Facere perspiciatis voluptatibus at amet, eius ipsam.
+            Mi Nombre es Myriam, creadora de Sublimahyca, pequeña tienda de
+            regalos, con artículos personalizados, que nació en post pandemia,
+            por la necesidad de dejar mi trabajo para ser cuidadora de mi madre.
+            Se me hizo fácil inclinarme por este nombre, pues incluye mis
+            iniciales y las iniciales de Casablanca, comuna de la V región con
+            el valle más hermoso del mundo y que nos acogió hace algunos años.
+            La “magia” que se puede inferir de sus letras es lo que me inspiró,
+            pues mi objetivo es añadir un toque mágico a cada producto,
+            convirtiéndolo en algo único y especial, porque en Sublimahyca
+            creemos que la magia de los regalos es que sean únicos y especiales
+            para cada persona. Desde la selección cuidadosa de materiales hasta
+            la atención meticulosa a los detalles, cada artículo que entregamos
+            es una expresión de calidad y dedicación. Nos esforzamos por ofrecer
+            no solo productos personalizados, sino experiencias que te hagan
+            sonreír cada vez que los utilizas. En SUBLIMAHYCA, tu creatividad es
+            nuestra guía para que "magia" no sea solo una palabra si no también
+            un compromiso de que cada creación lleva consigo un diseño para
+            inspirar sonrisas y crear recuerdos duraderos. Te invitamos a
+            conocer nuestro trabajo. ¡Bienvenido a SUBLIMAHYCA, donde la magia
+            se convierte en realidad!
           </p>
         </div>
         <img
