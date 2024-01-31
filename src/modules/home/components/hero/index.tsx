@@ -13,10 +13,13 @@ const Hero = () => {
           </h1>
           <div className="flex justify-center items-center">
             <p className="text-base-regular mx-4  bg-opacity-70 max-w-lg drop-shadow-lg shadow-black ">
-              En Sublimahyca, creemos que cada regalo debe contar una historia.
-              Descubre nuestra gama única de regalos personalizados, diseñados
-              para celebrar y conmemorar las ocasiones más especiales de la
-              vida.
+              En Sublimahyca, creemos en la belleza de la individualidad. Cada
+              persona es única, y cada historia es preciosa. Es por eso que nos
+              esforzamos por ofrecer servicios de personalización que reflejen
+              tu estilo, tu amor y tus recuerdos. Ya sea que estés buscando
+              regalos únicos, artículos promocionales con tu toque distintivo o
+              simplemente desees expresar tu creatividad a través de productos
+              personalizados, estamos aquí para hacerlo posible.
             </p>
           </div>
           <UnderlineLink href="/store" classNames=" ml-6">
