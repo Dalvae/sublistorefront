@@ -16,8 +16,7 @@ const Hero = () => {
               En Sublimahyca, creemos que cada regalo debe contar una historia.
               Descubre nuestra gama única de regalos personalizados, diseñados
               para celebrar y conmemorar las ocasiones más especiales de la
-              vida. Desde grabados hechos a mano hasta diseños a medida, tus
-              seres queridos merecen algo tan único como ellos..
+              vida.
             </p>
           </div>
           <UnderlineLink href="/store" classNames=" ml-6">
