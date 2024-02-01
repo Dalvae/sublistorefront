@@ -19,6 +19,9 @@ module.exports = {
         visibility: "visibility",
         padding: "padding-top padding-right padding-bottom padding-left",
       },
+      scale: {
+        175: "1.75",
+      },
       colors: {
         grey: {
           0: "#FFFFFF",
@@ -33,10 +36,10 @@ module.exports = {
           80: "#1F2937",
           90: "#111827",
         },
-        primary: '#e96d7b',
-        secondary: '#a991f7',
-        accent: '#66b1b3',
-        neutral: '#af4670',
+        primary: "#e96d7b",
+        secondary: "#a991f7",
+        accent: "#66b1b3",
+        neutral: "#af4670",
       },
       borderRadius: {
         none: "0px",
