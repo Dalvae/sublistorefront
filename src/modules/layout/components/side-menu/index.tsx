@@ -16,7 +16,6 @@ const dancing = Dancing_Script({
 const SideMenuItems = {
   Home: "/",
   Tienda: "/store",
-  Buscar: "",
   "¿Quiénes somos?": "/about",
   Cuenta: "/account",
   Carrito: "/cart",
@@ -64,7 +63,9 @@ const SideMenu = ({ searchModalOpen }: { searchModalOpen: () => void }) => {
                         <XMark />
                       </button>
                     </div>
-                    <ul className="flex flex-col gap-6 items-start justify-start">
+                    <ul
+                      className={`flex flex-col gap-6 items-start justify-start ${dancing.className}`}
+                    >
                       {Object.entries(SideMenuItems).map(([name, href]) => {
                         if (
                           name === "Search" &&
