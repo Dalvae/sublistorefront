@@ -6,7 +6,7 @@ import InteractiveLink from "@modules/common/components/interactive-link"
 const Hero = () => {
   return (
     <div className="h-[90vh] w-full  relative">
-      <div className="absolute top-1/3 lg:left-1/4 md:left-1/3 sm:left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
+      <div className="absolute top-1/3 lg:left-1/4 md:left-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
         <div className="relative h-64 w-64 rounded-full overflow-hidden transition-transform duration-500 ease-in-out hover:scale-110">
           <Image
             src="/l.jpg"
