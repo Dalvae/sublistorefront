@@ -95,29 +95,8 @@ const ShippingInfoTab = () => {
           <div>
             <span className="font-semibold">Entrega rápida</span>
             <p className="max-w-sm">
-              Tu paquete llegará en 3-5 días hábiles a tu punto de recogida o en
-              la comodidad de tu hogar.
-            </p>
-          </div>
-        </div>
-        <div className="flex items-start gap-x-2">
-          <Refresh />
-          <div>
-            <span className="font-semibold">Cambios simples</span>
-            <p className="max-w-sm">
-              ¿No es la talla correcta? No te preocupes, intercambiaremos tu
-              producto por uno nuevo.
-            </p>
-          </div>
-        </div>
-        <div className="flex items-start gap-x-2">
-          <Back />
-          <div>
-            <span className="font-semibold">Devoluciones fáciles</span>
-            <p className="max-w-sm">
-              Solo devuelve tu producto y reembolsaremos tu dinero. Sin
-              preguntas – nos aseguraremos de que tu devolución sea sin
-              complicaciones.
+              Tu paquete sera enviado por por starken en modalidad pagar al
+              receptor
             </p>
           </div>
         </div>
