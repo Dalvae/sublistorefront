@@ -4,7 +4,7 @@ import { Button } from "@medusajs/ui"
 import Input from "@modules/common/components/input"
 import Spinner from "@modules/common/icons/spinner"
 import Link from "next/link"
-import { useRouter } from "next/navigation"
+import { useRouter } from "next/router" // Corrección: 'next/navigation' a 'next/router'
 import { useState } from "react"
 import { FieldValues, useForm } from "react-hook-form"
 
@@ -23,7 +23,7 @@ const Register = () => {
   const router = useRouter()
 
   const handleError = (e: Error) => {
-    setAuthError("An error occured. Please try again.")
+    setAuthError("Ocurrió un error. Por favor, intenta de nuevo.")
   }
 
   const {
@@ -50,7 +50,7 @@ const Register = () => {
         </div>
       )}
       <h1 className="text-large-semi uppercase mb-6">
-        Empieza tu Experiencia Sublimahyca
+        Empieza tu experiencia Sublimahyca
       </h1>
       <p className="text-center text-base-regular text-gray-700 mb-4">
         Crea tu perfil de miembro de Sublimahyca y obtén acceso a una
@@ -59,33 +59,37 @@ const Register = () => {
       <form className="w-full flex flex-col" onSubmit={onSubmit}>
         <div className="flex flex-col w-full gap-y-2">
           <Input
-            label="First name"
-            {...register("first_name", { required: "First name is required" })}
+            label="Nombre"
+            {...register("first_name", { required: "El nombre es requerido" })}
             autoComplete="given-name"
             errors={errors}
           />
           <Input
-            label="Last name"
-            {...register("last_name", { required: "Last name is required" })}
+            label="Apellidos"
+            {...register("last_name", {
+              required: "Los apellidos son requeridos",
+            })}
             autoComplete="family-name"
             errors={errors}
           />
           <Input
-            label="Email"
-            {...register("email", { required: "Email is required" })}
+            label="Correo electrónico"
+            {...register("email", {
+              required: "El correo electrónico es requerido",
+            })}
             autoComplete="email"
             errors={errors}
           />
           <Input
-            label="Phone"
+            label="Teléfono"
             {...register("phone")}
             autoComplete="tel"
             errors={errors}
           />
           <Input
-            label="Password"
+            label="Contraseña"
             {...register("password", {
-              required: "Password is required",
+              required: "La contraseña es requerida",
             })}
             type="password"
             autoComplete="new-password"
@@ -95,22 +99,22 @@ const Register = () => {
         {authError && (
           <div>
             <span className="text-rose-500 w-full text-small-regular">
-              Estas credenciales no coinciden con nuestro registro
+              {authError}
             </span>
           </div>
         )}
         <span className="text-center text-gray-700 text-small-regular mt-6">
-          Al crear una cuenta aceptas los terminos de Sublimahyca{" "}
-          <Link href="/content/privacy-policy" className="underline">
-            Política de privacidad
+          Al crear una cuenta aceptas los términos de Sublimahyca{" "}
+          <Link href="/content/privacy-policy">
+            <a className="underline">Política de privacidad</a>
           </Link>{" "}
-          and{" "}
-          <Link href="/content/terms-of-use" className="underline">
-            Terminos de uso
+          y{" "}
+          <Link href="/content/terms-of-use">
+            <a className="underline">Términos de uso</a>
           </Link>
           .
         </span>
-        <Button className="mt-6">Join</Button>
+        <Button className="mt-6">Unirse</Button>
       </form>
       <span className="text-center text-gray-700 text-small-regular mt-6">
         ¿Ya eres miembro?{" "}
@@ -118,7 +122,7 @@ const Register = () => {
           onClick={() => setCurrentView(LOGIN_VIEW.SIGN_IN)}
           className="underline"
         >
-          Inicia sección
+          Inicia sesión
         </button>
       </span>
     </div>

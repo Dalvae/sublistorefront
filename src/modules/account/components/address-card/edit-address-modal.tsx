@@ -72,7 +72,7 @@ const EditAddress: React.FC<EditAddressProps> = ({
       country_code: data.country_code,
       province: data.province || "",
       postal_code: data.postal_code,
-      phone: data.phone || "None",
+      phone: data.phone || "Ninguno",
       metadata: {},
     }
 
@@ -85,7 +85,7 @@ const EditAddress: React.FC<EditAddressProps> = ({
       })
       .catch(() => {
         setSubmitting(false)
-        setError("Failed to update address, please try again.")
+        setError("Error al actualizar dirección, por favor intenta de nuevo.")
       })
   })
 
@@ -134,74 +134,74 @@ const EditAddress: React.FC<EditAddressProps> = ({
             onClick={open}
           >
             <Edit />
-            Edit
+            Editar
           </button>
           <button
             className="text-small-regular text-gray-700 flex items-center gap-x-2"
             onClick={removeAddress}
           >
             <Trash />
-            Remove
+            Eliminar
           </button>
         </div>
       </div>
 
       <Modal isOpen={state} close={close}>
         <Modal.Title>
-          <Heading className="mb-2">Edit address</Heading>
+          <Heading className="mb-2">Editar dirección</Heading>
         </Modal.Title>
         <Modal.Body>
           <div className="grid grid-cols-1 gap-y-2">
             <div className="grid grid-cols-2 gap-x-2">
               <Input
-                label="First name"
+                label="Nombre"
                 {...register("first_name", {
-                  required: "First name is required",
+                  required: "Nombre es requerido",
                 })}
                 required
                 errors={errors}
                 autoComplete="given-name"
               />
               <Input
-                label="Last name"
+                label="Apellidos"
                 {...register("last_name", {
-                  required: "Last name is required",
+                  required: "Apellidos son requeridos",
                 })}
                 required
                 errors={errors}
                 autoComplete="family-name"
               />
             </div>
-            <Input label="Company" {...register("company")} errors={errors} />
+            <Input label="Empresa" {...register("company")} errors={errors} />
             <Input
-              label="Address"
+              label="Dirección"
               {...register("address_1", {
-                required: "Address is required",
+                required: "Dirección es requerida",
               })}
               required
               errors={errors}
               autoComplete="address-line1"
             />
             <Input
-              label="Apartment, suite, etc."
+              label="Apartamento, suite, etc."
               {...register("address_2")}
               errors={errors}
               autoComplete="address-line2"
             />
             <div className="grid grid-cols-[144px_1fr] gap-x-2">
               <Input
-                label="Postal code"
+                label="Código postal"
                 {...register("postal_code", {
-                  required: "Postal code is required",
+                  required: "Código postal es requerido",
                 })}
                 required
                 errors={errors}
                 autoComplete="postal-code"
               />
               <Input
-                label="City"
+                label="Ciudad"
                 {...register("city", {
-                  required: "City is required",
+                  required: "Ciudad es requerida",
                 })}
                 errors={errors}
                 required
@@ -209,7 +209,7 @@ const EditAddress: React.FC<EditAddressProps> = ({
               />
             </div>
             <Input
-              label="Province / State"
+              label="Provincia / Estado"
               {...register("province")}
               errors={errors}
               autoComplete="address-level1"
@@ -219,7 +219,7 @@ const EditAddress: React.FC<EditAddressProps> = ({
               autoComplete="country"
             />
             <Input
-              label="Phone"
+              label="Teléfono"
               {...register("phone")}
               errors={errors}
               autoComplete="phone"
@@ -232,10 +232,10 @@ const EditAddress: React.FC<EditAddressProps> = ({
         <Modal.Footer>
           <div className="flex gap-3 mt-4">
             <Button variant="secondary" onClick={close} disabled={submitting}>
-              Cancel
+              Cancelar
             </Button>
             <Button className="min-h-0" onClick={submit} isLoading={submitting}>
-              Save
+              Guardar
             </Button>
           </div>
         </Modal.Footer>
