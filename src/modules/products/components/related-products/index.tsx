@@ -57,10 +57,10 @@ const RelatedProducts = ({ product }: RelatedProductsProps) => {
     <div className="product-page-constraint">
       <div className="flex flex-col items-center text-center mb-16">
         <span className="text-base-regular text-gray-600 mb-6">
-          Related products
+          Productos relacionados
         </span>
         <p className="text-2xl-regular text-gray-900 max-w-lg">
-          You might also want to check out these products.
+          También te gustaría mirar estos productos.
         </p>
       </div>
 

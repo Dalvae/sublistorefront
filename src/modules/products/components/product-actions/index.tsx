@@ -91,10 +91,10 @@ const ProductActionsInner: React.FC<ProductActionsProps> = ({ product }) => {
         className="w-full h-10"
       >
         {!inStock
-          ? "Out of stock"
+          ? "Fuera de stock"
           : !variant
-          ? "Select variant"
-          : "Add to cart"}
+          ? "Seleccionar variante"
+          : "Añadir al carrito"}
       </Button>
     </div>
   )

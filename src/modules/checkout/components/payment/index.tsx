@@ -205,7 +205,7 @@ const Payment = () => {
               }
               isLoading={settingPaymentSession}
             >
-              Continue to review
+              Continuar
             </Button>
           </div>
         ) : (
@@ -246,7 +246,7 @@ const Payment = () => {
                   <Text>
                     {cart.payment_session.provider_id === "stripe"
                       ? "**** **** **** ****"
-                      : "Another step will appear"}
+                      : "Seras redireccionado a transbank"}
                   </Text>
                 </div>
               </div>

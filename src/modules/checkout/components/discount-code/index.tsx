@@ -202,7 +202,7 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
             </Label>
             <div className="flex w-full gap-x-2 items-center">
               <Input
-                label="Please enter code"
+                label="Por favor introduce tu código"
                 {...register("discount_code", {
                   required: "Code is required",
                 })}
