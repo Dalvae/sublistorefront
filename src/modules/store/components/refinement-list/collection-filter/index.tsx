@@ -21,7 +21,7 @@ const CollectionFilter = ({
 
   const collectionMap = [
     {
-      value: "",
+      value: "all",
       label: "Todas las colecciones",
     },
     ...collections.map((c) => ({
@@ -34,14 +34,14 @@ const CollectionFilter = ({
     const selectedCollectionId = e.target.value
     setCollectionId(selectedCollectionId)
 
-    if (selectedCollectionId) {
+    if (selectedCollectionId === "all") {
+      const { collection_id, ...restRefinementList } = refinementList
+      setRefinementList(restRefinementList)
+    } else {
       setRefinementList({
         ...refinementList,
         collection_id: [selectedCollectionId],
       })
-    } else {
-      const { collection_id, ...restRefinementList } = refinementList
-      setRefinementList(restRefinementList)
     }
   }
 
