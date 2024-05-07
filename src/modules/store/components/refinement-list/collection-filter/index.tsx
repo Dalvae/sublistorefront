@@ -35,8 +35,11 @@ const CollectionFilter = ({
     setCollectionId(selectedCollectionId)
 
     if (selectedCollectionId === "all") {
-      const { collection_id, ...restRefinementList } = refinementList
-      setRefinementList(restRefinementList)
+      const allCollectionIds = collections.map((c) => c.id)
+      setRefinementList({
+        ...refinementList,
+        collection_id: allCollectionIds,
+      })
     } else {
       setRefinementList({
         ...refinementList,
