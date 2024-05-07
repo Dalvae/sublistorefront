@@ -19,21 +19,30 @@ const CollectionFilter = ({
     return null
   }
 
-  const collectionMap = collections?.map((c) => ({
-    value: c.id,
-    label: c.title,
-  }))
+  const collectionMap = [
+    {
+      value: "",
+      label: "Todas las colecciones",
+    },
+    ...collections.map((c) => ({
+      value: c.id,
+      label: c.title,
+    })),
+  ]
 
-  const handleCollectionChange = (
-    e: ChangeEvent<HTMLInputElement>,
-    id: string
-  ) => {
-    setCollectionId(id)
+  const handleCollectionChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const selectedCollectionId = e.target.value
+    setCollectionId(selectedCollectionId)
 
-    setRefinementList({
-      ...refinementList,
-      collection_id: [id],
-    })
+    if (selectedCollectionId) {
+      setRefinementList({
+        ...refinementList,
+        collection_id: [selectedCollectionId],
+      })
+    } else {
+      const { collection_id, ...restRefinementList } = refinementList
+      setRefinementList(restRefinementList)
+    }
   }
 
   return (

@@ -1,11 +1,11 @@
 import FilterRadioGroup from "@modules/common/components/filter-radio-group"
 import { ChangeEvent } from "react"
 
-export type SortOptions = "price_asc" | "price_desc" | "created_at"
+export type SortOptions = "price_asc" | "price_desc" | "created_at" | ""
 
 type SortProductsProps = {
   sortBy: SortOptions
-  setSortBy: (value: string) => void
+  setSortBy: (value: SortOptions) => void
 }
 
 const sortOptions = [
@@ -24,8 +24,8 @@ const sortOptions = [
 ]
 
 const SortProducts = ({ sortBy, setSortBy }: SortProductsProps) => {
-  const handleChange = (e: ChangeEvent<HTMLButtonElement>) => {
-    setSortBy(e.target.value)
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setSortBy(e.target.value as SortOptions)
   }
 
   return (
